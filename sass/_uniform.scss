@@ -1,0 +1,49 @@
+/* UNI FORM */
+form {margin:0; padding:0; overflow:hidden;}
+form br {display:none; }
+form p {overflow: hidden; clear: both;}
+
+form textarea, 
+form .fileupload,
+form .textinput,
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="submit"],
+form select,
+form .selectinput{border:1px solid #dfdfdf; background:#dedee5 * 2;  margin:1% 0; padding:1%; width:97%; display: block; vertical-align: top;  float:right;}
+form label{float:left; width:19%; display:block; vertical-align: top; text-align:left; clear: left;}
+form label em {font-style:italic; font-weight:normal;}
+form .radiogroup label,
+form .checkgroup label,
+form .radiogroup input,
+form .checkgroup input{width:auto;}
+form fieldset {border:none; margin:0; padding:0;}
+form fieldset legend {color:#000; font-weight:bold; background:none; margin:0; padding:.5em 0; clear:both; display:block;}
+form .formhint{color:#999; display:block; line-height:1.2em;  font-size:.818em}
+
+
+  /* FANCY PANTS BUTTONS */
+
+form input[type="submit"],
+a.more-link 
+  {
+  border:1px solid #dfdfdf; 
+  margin:.5em 0;
+  padding:.2em 0;
+  display: block; 
+  vertical-align: top;  
+  float:right; 
+  text-align:center; 
+  line-height: 35px; 
+  text-decoration: none; 
+  overflow: hidden; 
+   background:#dedee5;  width: 100%}
+  
+form input[type="submit"]:hover,
+a.more-link:hover 
+  { 
+  background: $body_link_color;
+  color:black; }
+

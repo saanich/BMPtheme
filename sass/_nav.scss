@@ -1,0 +1,171 @@
+/* Main navigation
+================================================== */
+
+nav {}
+ul.menu { list-style: none;
+  li {float:left;position: relative;}
+ 
+  li a{ 
+    background:$nav_bg;
+    text-align:center; 
+    line-height: 3.5em; 
+    float:left; 
+    color:$nav_color; 
+    padding:0px; 
+    display:block; 
+    text-decoration:none; 
+    position: relative;
+    width:100%; }
+
+  li.current_page_item a,
+  li.current-menu-item a,
+  li.current-menu-parent a,
+  li a:hover,  
+  li a:focus{color:$nav_hover_color; background:$nav_hover_bg;} 
+
+  ul.sub-menu{ 
+    margin: 3.5em 0 0 0; 
+    position:absolute; 
+    z-index: 100;  
+    font-size: inherit; 
+    list-style: none;}    
+  ul.sub-menu li{ margin: 0; width:100%; background: rgba($nav_dropdown_color, 0.9)*.9;} 
+  ul.sub-menu li:before{background-color: none;display: none;}
+  ul.sub-menu li:hover:before{background-color: none;display: none;}
+  ul.sub-menu li a{background:none; color:$nav_color;}
+  ul.sub-menu li.current_page_item > a,
+  ul.sub-menu li.current-menu-item > a,
+  ul.sub-menu li > a:hover, 
+  ul.sub-menu li > a:focus{background:$nav_hover_bg; color:$nav_hover_color;}
+  ul.sub-menu ul.sub-menu{ margin:  0 0 0 100%; width: 100%;  }    
+}
+.main-nav-check,
+.mobile-nav ,
+.toggle-menu {
+  display: none;
+}
+
+/* Mobile navigation
+================================================== */
+@media only screen and (max-width: $teenbreak) {
+nav .container {
+    width: 100%;
+  }
+
+.main-nav {
+    display: none;
+  }
+
+.mobile-nav{
+  ul.menu  {margin:0; overflow:hidden; list-style: none;
+    li {float:left; margin:0 0 0 1%; width:98%; list-style: none;}
+    li a{
+      font-family: arial;
+      text-align:left; 
+      line-height: 2em; 
+      float:left; 
+      color:$nav_color; 
+      padding:0px; 
+      display:block; 
+      overflow:hidden; 
+      text-decoration:none; 
+      width:100%;
+      padding: 0 0 0 10px }
+    li.current_page_item a,
+    li.current-menu-item a,
+    li.current-menu-parent a,
+    li a:hover,  
+    li a:focus{color:$nav_hover_color; background: none; }
+    ul.sub-menu{ 
+      margin:0; 
+      display: block !important; 
+      position: relative; 
+      z-index: 100;  
+      font-size: inherit; 
+      border:none; 
+      width:98%; 
+      list-style: none;
+      }    
+    ul.sub-menu li{ margin: 0; width: 100%; background:none;} 
+    ul.sub-menu li a{background:none; color:$nav_color;  text-indent: 25px}
+    ul.sub-menu li.current_page_item > a,
+    ul.sub-menu li.current-menu-item > a,
+    ul.sub-menu li > a:hover, 
+    ul.sub-menu li > a:focus{background: none; color:$nav_hover_color; background: none;}
+
+    ul.sub-menu ul.sub-menu{ margin:  0; position: relative; }  
+    ul.sub-menu ul.sub-menu li a{text-indent: 50px}  
+  }
+}
+
+.topbar {margin-top:30px;}  
+
+  .toggle-menu { 
+    font-size: 32px;
+    cursor: pointer;
+    display:block;
+    background: #fff;
+    overflow: hidden;
+    padding: 10px; 
+    top: 0;
+    z-index:1000;
+    text-align: center;}
+
+  .page-wrap {
+    transition: width 0.3s ease;}
+
+  .main-nav-check {display: none;}
+
+  .mobile-nav {
+    display: block;
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    width: 0;
+    background: #3B3B3B;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    a {
+      display: block;
+      background: linear-gradient(#3E3E3E, #383838) !important;
+      border-top: 1px solid #484848;
+      border-bottom: 1px solid #2E2E2E;
+      color: #fff;
+      padding: 15px;
+      &:hover, &:focus {
+        background: linear-gradient(#484848, #383838);
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 34px;
+    background: linear-gradient(left, rgba(black, 0), rgba(black, 0.4));
+  }
+}
+
+// .content {
+//     padding: 100px 20px 20px 20px;
+//   }
+
+  .close-menu {
+    display: none;
+  }
+  #main-nav-check:checked + #mobile-nav {
+    width: 200px;}
+  #main-nav-check:checked ~ .page-wrap {
+      
+      position: relative;
+      .open-menu {
+         display: none;}
+      .close-menu {
+         display: block;}
+      .main-header {
+        width: 80%;
+        left: 20%;}
+  }
+}
