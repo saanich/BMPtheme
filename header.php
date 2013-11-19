@@ -67,15 +67,13 @@
   </nav> 
 
   <div class="navdecoration"></div>
+  
   <div class="main">
-    
-    <div class="container fivecol">
-      
-      <div class="logo col">
+    <div class="container fourcol header">
+      <div class="logo col ">
         <h1><a href="<?php bloginfo('url'); ?>"><span><?php bloginfo('name'); ?></span></a></h1>
       </div>
-      
-      <div class="navholder col spanfour">
+      <div class="navholder col spanthree">
         <nav class="menubar main-nav" id="main-nav">
           <?php wp_nav_menu(array('theme_location' => 'primary-menu'));?>
         </nav>
