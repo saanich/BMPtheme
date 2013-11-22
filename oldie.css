@@ -1,0 +1,10 @@
+/*
+Old IE Styles for IE9 or less
+*/
+
+ul.menu li {
+margin: 0 1em 0 0;
+}
+.topserach form input[type="submit"]{
+	font-size: 0px;
+}

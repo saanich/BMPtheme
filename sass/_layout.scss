@@ -53,10 +53,11 @@ e.g.  <div class="col spanthree">...</div>
 $margin_width:$master_margin_width;
 $fullcontainer_width:$papawidth;
 
-    .main {width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width; }
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
+    .main                           { width: $fullcontainer_width - ($margin_width /2);}
 
 $onecol_width:($fullcontainer_width)-($margin_width*2);
 $twocol_width:($fullcontainer_width/2)-($margin_width*3/2);
@@ -64,6 +65,8 @@ $threecol_width:($fullcontainer_width/3)-($margin_width*4/3);
 $fourcol_width:($fullcontainer_width/4)-($margin_width*5/4); 
 $fivecol_width:($fullcontainer_width/5)-($margin_width*6/5); 
 $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);   
+   
+    .col{width:($fullcontainer_width/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
 
     .onecol .col                                  {width: $onecol_width;}
     .twocol .col                                  {width: $twocol_width;}
@@ -101,8 +104,15 @@ $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);
     
 /* Incedentals
 ================================================== */
-
-$menuitem_width:($fullcontainer_width * (($width_of_nav_in_columns/$number_of_columns)/$number_of_nav_items)) - ($margin_width * $number_of_nav_items / ($number_of_nav_items - 1) );
+$menuitem_width:
+(
+    ($fullcontainer_width / $number_of_columns)
+    *
+    ($width_of_nav_in_columns / $number_of_nav_items)
+)
+-
+($margin_width * ($number_of_columns + 1) / $number_of_columns)
+;
 
 ul.menu {margin:0;
   li {margin:0 $margin_width 0 0; width:$menuitem_width}
@@ -127,17 +137,22 @@ ul.menu {margin:0;
     $fullcontainer_width:$mamawidth;
     $margin_width:($master_margin_width * ($mamawidth/$papawidth));    
 
-    .main                     {  width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
+    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
+    /*just for this particular design. 
+    The main ares needs to be smaller than the header*/
+    .main                           { width: $fullcontainer_width - ($margin_width /2);}
 
     $onecol_width:($fullcontainer_width)-($margin_width*2);
     $twocol_width:($fullcontainer_width/2)-($margin_width*3/2);
     $threecol_width:($fullcontainer_width/3)-($margin_width*4/3);
     $fourcol_width:($fullcontainer_width/4)-($margin_width*5/4); 
     $fivecol_width:($fullcontainer_width/5)-($margin_width*6/5); 
-    $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);   
+    $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);  
+
+    .col{width:($fullcontainer_width/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
 
     .onecol .col                                  {width: $onecol_width;}
     .twocol .col                                  {width: $twocol_width;}
@@ -172,7 +187,18 @@ ul.menu {margin:0;
         .sixcol .spanfive.rowholder               {width: $sixcol_width * 5 + ($margin_width * 5);}
         .sixcol .spansix.rowholder                {width: $sixcol_width * 6 + ($margin_width * 6);}
     
-$menuitem_width:($fullcontainer_width * (($width_of_nav_in_columns/$number_of_columns)/$number_of_nav_items)) - ($margin_width * $number_of_nav_items / ($number_of_nav_items - 1) );
+$menuitem_width:
+
+(
+    ($fullcontainer_width / $number_of_columns)
+    *
+    ($width_of_nav_in_columns / $number_of_nav_items)
+)
+-
+($margin_width * ($number_of_columns + 1) / $number_of_columns)
+;
+
+
     ul.menu {margin:0;
       li {margin:0 $margin_width 0 0; width:$menuitem_width}
       ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;}
@@ -190,135 +216,12 @@ _________ _______  _______  _
    )_(   (_______/(_______/|/    )_)
  
 */
-@media only screen and (min-width: $babybreak) and (max-width: $teenbreak) {
+@media only screen and (min-width:0) and (max-width: $teenbreak) {
     $fullcontainer_width:$teenwidth;
-    $margin_width:($master_margin_width * ($teenwidth/$mamawidth));  
-
-    $onecol_width:($fullcontainer_width)-($margin_width*2);
-    $twocol_width:($fullcontainer_width/2)-($margin_width*3/2);
-    $threecol_width:($fullcontainer_width/3)-($margin_width*4/3);
-    
-    $fourcol_width:($fullcontainer_width/4)-($margin_width*5/4); 
-    $fivecol_width:($fullcontainer_width/5)-($margin_width*6/5); 
-    $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);   
-
-    .main                      {width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden;}
-    .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
-    .container .nomargin            { margin:0;}
-    .container .rowholder           { margin:0;}
-   
-
-    .onecol .col                                  {width: $onecol_width;}
-    .twocol .col                                  {width: $twocol_width;}
-    .threecol .col                                {width: $threecol_width;} 
-        .threecol .spantwo                        {width: $threecol_width * 2 + $margin_width;}
-        .threecol .spantwo                        {width: $threecol_width * 3 + $margin_width * 2;}
-              
-    .fourcol .col                                 {width: $fourcol_width;}
-        .fourcol .spantwo                         {width: $fourcol_width * 2 + $margin_width;}
-        .fourcol .spanthree                       {width: $fourcol_width * 3 + ($margin_width * 2);}
-        .fourcol .spanfour                        {width: $fourcol_width * 4 + ($margin_width * 3);}
-                  
-    .fivecol .col                                 ,
-        .fivecol .spantwo                         ,
-        .fivecol .spanthree                       ,
-        .fivecol .spanfour                        ,
-        .fivecol .spanfive                        ,
-        .fivecol .spantwo.rowholder               ,
-        .fivecol .spanthree.rowholder             ,
-        .fivecol .spanfour.rowholder              ,
-        .fivecol .spanfour.rowholder              ,
-
-    .sixcol .col                                  ,
-        .sixcol .spantwo                          ,
-        .sixcol .spanthree                        ,
-        .sixcol .spanfour                         ,
-        .sixcol .spanfive                         ,
-        .sixcol .spansix                          ,
-
-        .sixcol .spantwo.rowholder                ,
-        .sixcol .spanthree.rowholder              ,
-        .sixcol .spanfour.rowholder               ,
-        .sixcol .spanfive.rowholder               ,
-        .sixcol .spansix.rowholder                ,
-        
-    .container .fullwidth           {width: $onecol_width;}
-
-}
-
-/*  #Mobile (Portrait)
- ______   _______  ______           
-(  ___ \ (  ___  )(  ___ \ |\     /|
-| (   ) )| (   ) || (   ) )( \   / )
-| (__/ / | (___) || (__/ /  \ (_) / 
-|  __ (  |  ___  ||  __ (    \   /  
-| (  \ \ | (   ) || (  \ \    ) (   
-| )___) )| )   ( || )___) )   | |   
-|/ \___/ |/     \||/ \___/    \_/   
- 
-*/ 
-@media only screen and (min-width:$tinybreak) and (max-width: $babybreak) {
-    $fullcontainer_width:$babywidth;
-    $margin_width:($master_margin_width * ($babywidth/$teenwidth));
-    
-    $onecol_width:$fullcontainer_width - ($master_margin_width * 2);
-    .main                     { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden; }
-    .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
-    .container .nomargin            { margin:0;}
-    .container .rowholder           { margin:0;}
-
-      .onecol .col                                ,
-    .twocol .col                                  ,
-    .threecol .col                                ,
-        .threecol .spantwo                        ,
-              
-    .fourcol .col                                 ,
-        .fourcol .spantwo                         ,
-        .fourcol .spanthree                       ,
-                  
-    .fivecol .col                                 ,
-        .fivecol .spantwo                         ,
-        .fivecol .spanthree                       ,
-        .fivecol .spanfour                        ,
-        .fivecol .spanfive                        ,
-        .fivecol .spantwo.rowholder               ,
-        .fivecol .spanthree.rowholder             ,
-        .fivecol .spanfour.rowholder              ,
-        .fivecol .spanfour.rowholder              ,
-        
-    .sixcol .col                                  ,
-        .sixcol .spantwo                          ,
-        .sixcol .spanthree                        ,
-        .sixcol .spanfour                         ,
-        .sixcol .spanfive                         ,
-        .sixcol .spansix                          ,
-
-        .sixcol .spantwo.rowholder                ,
-        .sixcol .spanthree.rowholder              ,
-        .sixcol .spanfour.rowholder               ,
-        .sixcol .spanfive.rowholder               ,
-        .sixcol .spansix.rowholder                ,
-        
-    .container .fullwidth           {width: $onecol_width;}
-}
-
-/*  #Mobile (Portrait)
-__________________ _                
-\__   __/\__   __/( (    /||\     /|
-   ) (      ) (   |  \  ( |( \   / )
-   | |      | |   |   \ | | \ (_) / 
-   | |      | |   | (\ \) |  \   /  
-   | |      | |   | | \   |   ) (   
-   | |   ___) (___| )  \  |   | |   
-   )_(   \_______/|/    )_)   \_/   
- 
- */ 
-@media only screen and (min-width:0) and (max-width: $tinybreak) {
-    $fullcontainer_width:$tinywidth;
-    $margin_width:(0);
+    $margin_width:5%;
     
     $onecol_width:$fullcontainer_width;
-    .main                     { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden; }
+    .container                     { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden; }
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}

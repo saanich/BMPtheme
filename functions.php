@@ -1,10 +1,31 @@
 <?php
+
 // Register some sidebars
 // =======================================================
  register_sidebar(array(
  'name' => __( 'Front page' ),
  'id' => 'frontpage',
- 'description' => __( 'frontpage' ),
+ 'description' => __( 'Right hand column, front page' ),
+ 'before_widget' => '<div>',
+ 'after_widget' => '</div>',
+ 'before_title' => '<h3>',
+ 'after_title' => '</h3>',
+ ));
+
+ register_sidebar(array(
+ 'name' => __( 'Top bar' ),
+ 'id' => 'topbar',
+ 'description' => __( 'Found on the top of the site on every page, the top bar lives on the top right side of the header. Intended for search.' ),
+ 'before_widget' => '',
+ 'after_widget' => '',
+ 'before_title' => '<h3>',
+ 'after_title' => '</h3>',
+ ));
+
+ register_sidebar(array(
+ 'name' => __( 'Under the Logo' ),
+ 'id' => 'underlogo',
+ 'description' => __( 'Left hand column, under the logo.' ),
  'before_widget' => '<div>',
  'after_widget' => '</div>',
  'before_title' => '<h3>',
@@ -14,18 +35,21 @@
 // Add featured image support
 // ======================================================= 
 add_theme_support( 'post-thumbnails' ); 
+
 // Change the [...] at the end of the excerpt
 // ======================================================= 
 function new_excerpt_more( $more ) {
     return ' <div class="excerpt"><span>...</span></div>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
 // Change the length the excerpt
 // ======================================================= 
 function custom_excerpt_length( $length ) {
     return 40;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 // Register two menus
 // ======================================================= 
 function register_my_menus() {
@@ -37,6 +61,7 @@ function register_my_menus() {
   );
 }
 add_action( 'init', 'register_my_menus' );
+
 // Variable & intelligent excerpt length.
 // ======================================================= 
 function print_excerpt($length) { // Max excerpt length. Length is set in characters
@@ -57,6 +82,7 @@ function print_excerpt($length) { // Max excerpt length. Length is set in charac
         echo apply_filters('the_excerpt',$text);
     }
 }
+
 // Returns the portion of haystack which goes until the last occurrence of needle
 function reverse_strrchr($haystack, $needle, $trail) {
     return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
