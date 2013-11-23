@@ -27,7 +27,9 @@ form .formhint{color:#999; display:block; line-height:1.2em;  font-size:.818em}
   /* FANCY PANTS BUTTONS */
 
 form input[type="submit"],
-a.more-link 
+a.more-link,
+.qa-faq-answer a[href $='.pdf'],
+.qa-permalink 
   {
   border:1px solid #dfdfdf; 
   margin:.5em 0;
@@ -39,11 +41,12 @@ a.more-link
   line-height: 35px; 
   text-decoration: none; 
   overflow: hidden; 
-   background:#dedee5;  width: 100%}
-  
-form input[type="submit"]:hover,
-a.more-link:hover 
-  { 
-  background: $body_link_color;
-  color:black; }
+  background:#dedee5;  
+  width: 100%;
+  &:hover{
+    background: $body_link_color;
+    color:black;
+    }
+}
+
 
