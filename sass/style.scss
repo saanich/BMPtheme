@@ -10,7 +10,7 @@ Author URI: http://saanich.ca/
 $contentbgcolor: rgba(#fff, 0.9);
 $darkcolor:#266fa0;
 $lightcolor:#4c9cd2;
-$splashcolor:#4c9cd2;
+$splashcolor:#efb211;
 $body_link_color:#4c9cd2;
 $body_link_hover_color:$body_link_color*1.7;
 $googlefont1:'Muli', sans-serif;
@@ -197,9 +197,30 @@ h1.pagetitle,h2,h3{
 	margin: 2.20em 0 1em 0;
 	border: 1px solid #1c5378;
 	border-width:0 0 3px 0;
+	a {
+	color:$darkcolor;
+	text-decoration: none;
+	}
 }
-.contentarea h3{
+.contentarea h3,
+.contentarea h4{
 	font-size:1.2em;
+	color:$splashcolor;
+	border-width:0;
+	a {
+	color:$splashcolor;
+	text-decoration: none;
+	display: block;
+	}
+}
+.contentarea h4{
+	font-size:1em;
+	color:$darkcolor;
+	border-width:0;
+	a {
+	color:$darkcolor;
+	text-decoration: none;
+	}
 }
 
 .subcol h1.pagetitle{
@@ -251,7 +272,8 @@ h1.pagetitle,h2,h3{
 	color:inherit;
 	text-decoration:none;
 	}
-.qa-faq-answer a[href $='.pdf']:after{
+
+a[href $='.pdf']:after{
     content:" - PDF document";
     background:transparent url(images/pdficon.png) no-repeat; 
     margin: 0 0 0 0px;

@@ -12,7 +12,7 @@ form input[type="email"],
 form input[type="tel"],
 form input[type="submit"],
 form select,
-form .selectinput{border:1px solid #dfdfdf; background:#dedee5 * 2;  margin:1% 0; padding:1%; width:97%; display: block; vertical-align: top;  float:right;}
+form .selectinput{border:1px solid #dfdfdf; background:#dedee5 * 2;  margin:1% 0; padding:1%; width:97.5%; display: block; vertical-align: top;  float:right;}
 form label{float:left; width:19%; display:block; vertical-align: top; text-align:left; clear: left;}
 form label em {font-style:italic; font-weight:normal;}
 form .radiogroup label,
@@ -28,7 +28,7 @@ form .formhint{color:#999; display:block; line-height:1.2em;  font-size:.818em}
 
 form input[type="submit"],
 a.more-link,
-.qa-faq-answer a[href $='.pdf'],
+a[href $='.pdf'],
 .qa-permalink 
   {
   border:1px solid #dfdfdf; 

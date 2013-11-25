@@ -13,6 +13,16 @@
  ));
 
  register_sidebar(array(
+ 'name' => __( 'Inside page' ),
+ 'id' => 'insidepage',
+ 'description' => __( 'Right hand column, inside page' ),
+ 'before_widget' => '<div>',
+ 'after_widget' => '</div>',
+ 'before_title' => '<h3>',
+ 'after_title' => '</h3>',
+ ));
+
+ register_sidebar(array(
  'name' => __( 'Top bar' ),
  'id' => 'topbar',
  'description' => __( 'Found on the top of the site on every page, the top bar lives on the top right side of the header. Intended for search.' ),
@@ -31,6 +41,38 @@
  'before_title' => '<h3>',
  'after_title' => '</h3>',
  ));
+
+// Login Script and logo change
+// ======================================================= 
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_bloginfo( 'template_directory' ) ?>/images/logo.png);
+            padding-bottom: 30px;
+            height: 140px;
+            background-size: auto;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+function my_login_logo_url() {
+    return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+// Login redirects to front page, not dashboard
+// ======================================================= 
+function admin_default_page() {
+  return '/';
+}
+
+add_filter('login_redirect', 'admin_default_page');
+
 
 // Add featured image support
 // ======================================================= 
@@ -61,6 +103,23 @@ function register_my_menus() {
   );
 }
 add_action( 'init', 'register_my_menus' );
+
+
+// Remove custom post_type from search results
+// ======================================================= 
+
+function searchfilter($query) {
+
+    if ($query->is_search && !is_admin() ) {
+        $query->set('post_type',array('post','page'));
+    }
+    if ($query->is_search && is_user_logged_in() ) {
+        $query->set('post_type',array('post','page','qa_faqs'));
+    }
+return $query;
+}
+
+add_filter('pre_get_posts','searchfilter');
 
 // Variable & intelligent excerpt length.
 // ======================================================= 

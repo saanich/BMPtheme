@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+  <!-- PAGE -->
   <div class="main container fourcol">
     <div class="col subcol">
       <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
