@@ -10,7 +10,7 @@ Author URI: http://saanich.ca/
 $contentbgcolor: rgba(#fff, 0.9);
 $darkcolor:#266fa0;
 $lightcolor:#4c9cd2;
-$splashcolor:#efb211;
+$splashcolor:darken( #efb211, 10% );
 $body_link_color:#4c9cd2;
 $body_link_hover_color:$body_link_color*1.7;
 $googlefont1:'Muli', sans-serif;
@@ -280,3 +280,7 @@ a[href $='.pdf']:after{
     padding: 0 16px 0 0;
     background-position: 122px 0;
 }
+.subcol ul li a.loggedin		{color:#ffb900;}
+.subcol ul li a.loggedin:hover 	{color:darken( $splashcolor, 10% );}
+.subcol ul li a.loggedout		{color:#ffb900;}
+.subcol ul li a.loggedout:hover {color:darken( $splashcolor, 10% );}
