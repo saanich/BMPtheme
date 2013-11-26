@@ -50,9 +50,11 @@ class wp_my_plugin extends WP_Widget {
 		echo '<ul>';
 		if ( is_user_logged_in() ) 
 		{ 
-			echo '<li><a href="https://bmp.saanich.ca/wp-login.php?action=logout" class="loggedin">Log out</a></li>';
+			echo '<li class="loggedin">';
+			echo wp_loginout('/');
+			echo '</li>';
 		} else {
-			echo '<li><a href="https://bmp.saanich.ca/wp-login.php" class="loggedout">Log in</a></li>';
+			echo '<li class="loggedout"><a href="https://bmp.saanich.ca/wp-login.php">Log in</a></li>';
 		}
 		echo '<li><a href="https://bmp.saanich.ca">BMP home page</a></li>';
 		echo '<li><a href="http://www.env.gov.bc.ca/wld/BMP/bmpintro.html">Ministry of Environment BMP Guidelines</a></li>';

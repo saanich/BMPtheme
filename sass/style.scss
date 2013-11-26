@@ -280,7 +280,7 @@ a[href $='.pdf']:after{
     padding: 0 16px 0 0;
     background-position: 122px 0;
 }
-.subcol ul li a.loggedin		{color:#ffb900;}
-.subcol ul li a.loggedin:hover 	{color:darken( $splashcolor, 10% );}
-.subcol ul li a.loggedout		{color:#ffb900;}
-.subcol ul li a.loggedout:hover {color:darken( $splashcolor, 10% );}
+.subcol ul li.loggedin a,
+.subcol ul li.loggedout a		{color:#ffb900;}
+.subcol ul li.loggedout a:hover,
+.subcol ul li.loggedin a:hover 	{color:#000;}
