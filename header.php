@@ -69,7 +69,7 @@
 </head>
 
 <body>
-  <label for="main-nav-check" class="toggle-menu">&#9776; Navigation</label>
+  <label for="main-nav-check" class="toggle-menu">Navigation</label>
   <input type="checkbox" class="main-nav-check" id="main-nav-check" /> 
   <nav class="menubar mobile-nav" id="mobile-nav">
     <?php wp_nav_menu(array( 'theme_location' => 'secondary-menu', 'container_class' => 'container' ) );?>
