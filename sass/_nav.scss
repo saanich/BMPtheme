@@ -92,15 +92,6 @@ ul.menu {
     background: #3B3B3B;
     overflow: hidden;
     transition: all 0.3s ease;
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 34px;
-      background: linear-gradient(left, rgba(black, 0), rgba(black, 0.4));
-    }
     ul.menu  {
       margin:0; 
       overflow:hidden; 
@@ -111,6 +102,7 @@ ul.menu {
         width:100%; 
         list-style: none;
       }
+      ul.sub-menu li a,
       li a{
         font-family: arial;
         text-align:left; 
@@ -119,10 +111,10 @@ ul.menu {
         overflow:hidden; 
         text-decoration:none; 
         width:100%;
-        padding: 0;
+        padding: 0 0 0 2%;
         display: block;
         line-height: 0; 
-        font-size: 0;
+        font-size: inherit; 
         background: linear-gradient(#3E3E3E, #383838) !important;
         border-top: 0px solid #484848;
         border-bottom: 0px solid #2E2E2E;
@@ -143,7 +135,6 @@ ul.menu {
       }
       ul.sub-menu{ 
         margin:0; 
-        display: block !important; 
         position: relative; 
         z-index: 100;  
         font-size: inherit; 
@@ -158,7 +149,7 @@ ul.menu {
         li a{
           background:none; 
           color:$nav_color;  
-          text-indent: 25px
+          text-indent: 25px;
         }
         li.current_page_item > a,
         li.current-menu-item > a,
@@ -181,6 +172,19 @@ ul.menu {
   .topbar {
     margin-top:30px;
     }  
+  .mobile-nav ul.menu li.menu-item-has-children > a{
+    width:83%;
+    float:left;
+  }
+  .mobile-nav ul.menu li.menu-item-has-children a.navdrop{
+    width: 12%;
+    
+    border-left: 1px solid #2E2E2E;
+    float: right;
+    font-family: 'FontAwesome';
+    span{display:none;}
+    &:after{ content: "\f055";}
+  }
   .toggle-menu { 
     font-size: 1.5em;
     cursor: pointer;
@@ -190,15 +194,12 @@ ul.menu {
     padding: 2% 5%; 
     top: 0;
     z-index:1000;
+    box-shadow: 0px 6px 19px rgba(0,0,0,0.2);
     &:before {
-      font-size: 1em;
-      font-weight: normal;
-      height: 1.3332em;
-      line-height: 1.3332em;
       margin-right: .3333em;
-      vertical-align: middle;
-      content: "\f0c9";
+      content: "\f055";
       font-family: 'FontAwesome';
+      transition: all 0.3s ease;
     }
   }
 
@@ -208,24 +209,13 @@ ul.menu {
   .close-menu {
     display: none;
   }
-  #main-nav-check:checked + #mobile-nav a {
+  #main-nav-check:checked ~ #mobile-nav a {
     line-height: 3em;
-    font-size: inherit; 
-    padding: 0 0 0 10px;
     border-top: 1px solid #484848;
+    border-right: 1px solid #484848;
     border-bottom: 1px solid #2E2E2E;
   }
-  #main-nav-check:checked ~ .page-wrap {
-    position: relative;
-    .open-menu {
-      display: none;
+  #main-nav-check:checked ~ .toggle-menu:before {
+    content: "\f056";
     }
-    .close-menu {
-      display: block;
-    }
-    .main-header {
-      width: 80%;
-      left: 20%;
-    }
-  }
 }

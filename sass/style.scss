@@ -94,10 +94,10 @@ body {
 }
 .headdecor{
 	background:$lightcolor; 
-	height: 50px;
+	height: 130px;
 	position: absolute;
 	z-index: -1;
-	top: 170px;
+	top: 80px;
 	left: 50%;
 	margin-left: -$papawidth/2;
 	@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
