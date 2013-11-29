@@ -16,8 +16,4 @@ $(document).ready(function(){
 			function(event) { $('~ ul', this).css('display', 'block');},
 			function(event) { $('~ ul', this).css('display', 'none');}
 		);
-		$('.mobile-nav .menu .navdrop').toggle(
-			function(event) { $(".navdrop:after", this).css('content', 'hi');},
-			function(event) { $(".navdrop:after", this).css('content', 'lo');}
-		);
 	});
