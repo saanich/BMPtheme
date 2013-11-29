@@ -1,79 +1,78 @@
 /* Main navigation
 ================================================== */
-nav {}
-.main-nav-check,
-.mobile-nav ,
-.toggle-menu {
-  display: none;
-}
-ul.menu { 
-  list-style: none;
-  li {
-    float:left;
-    position: relative;
+@media only screen and (min-width: $teenbreak) {
+  nav {}
+  .main-nav-check,
+  .mobile-nav ,
+  .toggle-menu {
+    display: none;
   }
-  li a{ 
-    background:$nav_bg;
-    text-align:center; 
-    line-height: 2em; 
-    float:left; 
-    color:$nav_color; 
-    padding:0px; 
-    display:block; 
-    text-decoration:none; 
-    position: relative;
-    width:100%; 
-  }
-  li.current_page_item a,
-  li.current-menu-item a,
-  li.current-menu-parent a,
-  li a:hover,  
-  li a:focus{
-    color:$nav_hover_color; 
-    background:$nav_hover_bg;
-  } 
-  ul.sub-menu{ 
-    margin: 3.5em 0 0 0; 
-    position:absolute; 
-    z-index: 100;  
-    font-size: inherit; 
+  ul.menu { 
     list-style: none;
-    li{ 
-      margin: 0; 
+    li {
+      float:left;
+      position: relative;
+    }
+    li a{ 
+      background:$nav_bg;
+      text-align:center; 
+      line-height: 2em; 
+      float:left; 
+      color:$nav_color; 
+      padding:0px; 
+      display:block; 
+      text-decoration:none; 
+      position: relative;
       width:100%; 
-      background: rgba($nav_dropdown_color, 0.9)*.9;
+    }
+    li.current_page_item a,
+    li.current-menu-item a,
+    li.current-menu-parent a,
+    li a:hover,  
+    li a:focus{
+      color:$nav_hover_color; 
+      background:$nav_hover_bg;
     } 
-    li:before{
-      background-color: none;
-      display: none;
-    }
-    li:hover:before{
-      background-color: none;
-      display: none;
-    }
-    li a{
-      background:none; 
-      color:$nav_color;
-    }
-    li.current_page_item > a,
-    li.current-menu-item > a,
-    li > a:hover, 
-    li > a:focus{
-      background:$nav_hover_bg; 
-      color:$nav_hover_color;
-    }
     ul.sub-menu{ 
-      margin:  0 0 0 100%; 
-      width: 100%;  
+      margin: 3.5em 0 0 0; 
+      position:absolute; 
+      z-index: 100;  
+      font-size: inherit; 
+      list-style: none;
+      li{ 
+        margin: 0; 
+        width:100%; 
+        background: rgba($nav_dropdown_color, 0.9)*.9;
+      } 
+      li:before{
+        background-color: none;
+        display: none;
+      }
+      li:hover:before{
+        background-color: none;
+        display: none;
+      }
+      li a{
+        background:none; 
+        color:$nav_color;
+      }
+      li.current_page_item > a,
+      li.current-menu-item > a,
+      li > a:hover, 
+      li > a:focus{
+        background:$nav_hover_bg; 
+        color:$nav_hover_color;
+      }
+      ul.sub-menu{ 
+        margin:  0 0 0 100%; 
+        width: 100%;  
+      }    
     }    
-  }    
+  }
 }
-
 
 /* Mobile navigation
 ================================================================================================ */
-$mobilebg:#3B3B3B;
-
 @media only screen and (max-width: $teenbreak) {
   nav .container {
     width: 100%;
@@ -102,37 +101,55 @@ $mobilebg:#3B3B3B;
         margin:0; 
         width:100%; 
         list-style: none;
-      }
-      ul.sub-menu li a,
-      li a{
-        font-family: arial;
-        text-align:left; 
-        float:left;  
-        display:block; 
-        overflow:hidden; 
-        text-decoration:none; 
-        width:100%;
-        padding: 0 0 0 2%;
-        display: block;
-        line-height: 0; 
-        font-size: inherit; 
-        background: none;
-        border-top: 0px solid #484848;
-        border-bottom: 0px solid #2E2E2E;
-        color: #fff;
-        transition: all 0.3s ease;
-        &:hover, 
-        &:focus {
-         
+         a{
+          font-family: arial;
+          text-align:left; 
+          float:left;  
+          display:block; 
+          overflow:hidden; 
+          text-decoration:none; 
+          width:100%;
+          padding: 0 0 0 2%;
+          display: block;
+          font-size: inherit; 
+          color: #fff;
         }
       }
-      li.current_page_item a,
-      li.current-menu-item a,
-      li.current-menu-parent a,
-      li a:hover,  
-      li a:focus{
-        color:$nav_hover_color; 
-        background: none; 
+      li.menu-item-has-children > a{
+        width:86%;
+        float:left;
+      }
+      li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children a.navdropover{
+        width: 12%;
+        text-indent: 0px;
+        float:right;
+        font-family:'FontAwesome';
+        background:lighten($mobilebg, 10%);
+        text-align: center;
+        padding:0;
+        border: 0 solid $mobilebg;
+        span{display:none;}
+        &:after{ content: "\f055";}
+        &:before{content: "";}
+      }
+      li.menu-item-has-children a.navdropover{
+        &:after{ content: "\f056";}
+        &:before{content: "";}
+      }
+      li.menu-item-has-children li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children li.menu-item-has-children a.navdropover{
+        background:lighten($mobilebg, 20%);
+        border: 0 solid lighten($mobilebg, 10%);
+        text-indent: 0px;
+        &:before{content: "";}
+      }
+      li.menu-item-has-children li.menu-item-has-children  li.menu-item-has-children a.navdrop,
+      li.menu-item-has-children li.menu-item-has-children  li.menu-item-has-children a.navdropover{
+        background:lighten($mobilebg, 30%);
+        border: 0 solid lighten($mobilebg, 20%);
+        text-indent: 0px;
+        &:before{content: "";}
       }
       ul.sub-menu{ 
         margin:0; 
@@ -145,55 +162,43 @@ $mobilebg:#3B3B3B;
         li{ 
           margin: 0; 
           width: 100%; 
-          background:none;
           background:lighten($mobilebg, 10%);
-        } 
-        li a{
+          a{
           color:$nav_color;  
-          text-indent: 25px;
-        }
-        li.current_page_item > a,
-        li.current-menu-item > a,
-        li > a:hover, 
-        li > a:focus{
-          color:$nav_hover_color; 
-        }
+          text-indent: 10px;
+          &:before{content: "- ";}
+          }
+        } 
         ul.sub-menu{ 
           margin:  0; 
           position: relative; 
-        } 
-        ul.sub-menu li {
-          background:lighten($mobilebg, 20%);
-        }  
-        ul.sub-menu li a{
-          text-indent: 50px;
+          li {
+            background:lighten($mobilebg, 20%);
+            a{ 
+            text-indent: 20px;
+            &:before{content: "-- ";}
+            }
+          }
+          ul.sub-menu{ 
+            margin:  0; 
+            position: relative; 
+            li {
+              background:lighten($mobilebg, 30%);
+              a{ 
+              text-indent: 30px;
+              &:before{content: "--- ";}
+              }
+            }
+          }
         }  
       }
     }
   }
+  /* Mobile topbar
+  ======================= */
   .topbar {
     margin-top:30px;
     }
-  .mobile-nav ul.menu ul.sub-menu li.menu-item-has-children > a,  
-  .mobile-nav ul.menu li.menu-item-has-children > a{
-    width:86%;
-    float:left;
-  }
-  .mobile-nav ul.menu ul.sub-menu li.menu-item-has-children a.navdrop,
-  .mobile-nav ul.menu li.menu-item-has-children a.navdrop{
-    width: 12%;
-    text-indent: 0px;
-    float: right;
-    font-family: 'FontAwesome';
-    background:lighten($mobilebg, 10%);
-    text-align: center;
-    padding:0;
-    span{display:none;}
-    &:after{ content: "\f055";}
-  }
-  .mobile-nav ul.menu  li.menu-item-has-children li.menu-item-has-children a.navdrop{
-    background:lighten($mobilebg, 20%);
-  }
   .toggle-menu { 
     font-size: 1.5em;
     cursor: pointer;
@@ -211,30 +216,62 @@ $mobilebg:#3B3B3B;
       transition: all 0.3s ease;
     }
   }
-
   .main-nav-check {
     display: none;
   }
   .close-menu {
     display: none;
   }
-  #main-nav-check:checked ~ #mobile-nav a {
-    line-height: 3em;
-    border-bottom: 1px solid #2E2E2E;
+
+  /* Mobile navigation Animations
+  ================================== */
+  #main-nav-check ~ .mobile-nav ul.menu li a {
+    line-height: 0em;
+    border-bottom: 0px solid darken($mobilebg, 10%);
+    transition: all 0.3s ease;
   }
-  #main-nav-check:checked ~ #mobile-nav a.navdrop {
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a {
     line-height: 3em;
-    border-bottom: 1px solid rgba($mobilebg, 0.2);
-    border-top: 0.25em solid $mobilebg;
+    border-bottom: 1px solid darken($mobilebg, 10%);
+    transition: all 0.3s ease;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdropover{
     line-height: 2.75em;
-  }
-  #main-nav-check:checked ~ #mobile-nav li.menu-item-has-children a.navdrop{
-    border-top: 0.25em solid $mobilebg;
-  }
-  #main-nav-check:checked ~ #mobile-nav li.menu-item-has-children li.menu-item-has-children a.navdrop{
-    border-top: 0.25em solid lighten($mobilebg, 10%);
+    border-width:0.25em 0 0 0;
+    transition: all 0.3s ease;
   }
 
+
+  #main-nav-check:checked ~ .mobile-nav ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a
+  {
+    line-height: 0;
+    border-bottom: 0 solid darken($mobilebg, 10%);
+    transition: all 0.3s ease;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.subshow li a{
+    line-height: 3em;
+    border-bottom: 1px solid darken($mobilebg, 10%);
+    transition: all 0.3s ease;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.subhide li a.navdropover,
+  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a.navdropover, 
+  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a.navdropover {
+    border-width:0;
+    line-height:0;
+    transition: all 0.3s ease;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.subshow li a.navdropover{
+    border-width:0.25em 0 0 0;
+    line-height: 2.75em;
+    transition: all 0.3s ease;
+  }
 
   #main-nav-check:checked ~ .toggle-menu:before {
     content: "\f056";

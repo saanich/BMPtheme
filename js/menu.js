@@ -1,19 +1,19 @@
 $(document).ready(function(){
-		$('.menu li ul.sub-menu').css('display', 'none');				   
+		$('.menu li ul.sub-menu').attr('class', 'sub-menu subhide');				   
 		
 		$('.main-nav .menu li').hover(
-			function() { $('> ul', this).css('display', 'block');},
-			function() { $('> ul', this).css('display', 'none');}
-		);
-		$('.main-nav .menu li').hover(
-			function() { $(this).addClass("current-menu-item");},
-			function() { $(this).removeClass("current-menu-item");}
+			function() { $('> ul', this).attr('class', 'sub-menu subshow');},
+			function() { $('> ul', this).attr('class', 'sub-menu');}
 		);
 
 		$('.mobile-nav .menu li.menu-item-has-children').prepend( "<a href='#' class='navdrop'><span>subnav</span></a>" );
 
 		$('.mobile-nav .menu .navdrop').toggle(
-			function(event) { $('~ ul', this).css('display', 'block');},
-			function(event) { $('~ ul', this).css('display', 'none');}
+			function() { $('~ ul', this).attr('class', 'sub-menu subshow');},
+			function() { $('~ ul', this).attr('class', 'sub-menu subhide');}
+		);
+		$('.mobile-nav .menu .navdrop').toggle(
+			function() { $(this).attr('class','navdropover');},
+			function() { $(this).attr('class','navdrop');}
 		);
 	});
