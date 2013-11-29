@@ -72,6 +72,7 @@ ul.menu {
 
 /* Mobile navigation
 ================================================================================================ */
+$mobilebg:#3B3B3B;
 
 @media only screen and (max-width: $teenbreak) {
   nav .container {
@@ -89,7 +90,7 @@ ul.menu {
     width: 90%;
     margin: 0 5%;
     height:auto;
-    background: #3B3B3B;
+    background: $mobilebg;
     overflow: hidden;
     transition: all 0.3s ease;
     ul.menu  {
@@ -115,14 +116,14 @@ ul.menu {
         display: block;
         line-height: 0; 
         font-size: inherit; 
-        background: linear-gradient(#3E3E3E, #383838) !important;
+        background: none;
         border-top: 0px solid #484848;
         border-bottom: 0px solid #2E2E2E;
         color: #fff;
         transition: all 0.3s ease;
         &:hover, 
         &:focus {
-          background: linear-gradient(#484848, #383838);
+         
         }
       }
       li.current_page_item a,
@@ -139,15 +140,15 @@ ul.menu {
         z-index: 100;  
         font-size: inherit; 
         border:none; 
-        width:98%; 
+        width:100%; 
         list-style: none;    
         li{ 
           margin: 0; 
           width: 100%; 
           background:none;
+          background:lighten($mobilebg, 10%);
         } 
         li a{
-          background:none; 
           color:$nav_color;  
           text-indent: 25px;
         }
@@ -155,35 +156,43 @@ ul.menu {
         li.current-menu-item > a,
         li > a:hover, 
         li > a:focus{
-          background: none; 
           color:$nav_hover_color; 
-          background: none;
         }
         ul.sub-menu{ 
           margin:  0; 
           position: relative; 
+        } 
+        ul.sub-menu li {
+          background:lighten($mobilebg, 20%);
         }  
         ul.sub-menu li a{
-          text-indent: 50px
+          text-indent: 50px;
         }  
       }
     }
   }
   .topbar {
     margin-top:30px;
-    }  
+    }
+  .mobile-nav ul.menu ul.sub-menu li.menu-item-has-children > a,  
   .mobile-nav ul.menu li.menu-item-has-children > a{
     width:83%;
     float:left;
   }
+  .mobile-nav ul.menu ul.sub-menu li.menu-item-has-children a.navdrop,
   .mobile-nav ul.menu li.menu-item-has-children a.navdrop{
     width: 12%;
-    
-    border-left: 1px solid #2E2E2E;
+    text-indent: 0px;
     float: right;
     font-family: 'FontAwesome';
+    background:lighten($mobilebg, 10%);
+    text-align: center;
+    padding:0;
     span{display:none;}
     &:after{ content: "\f055";}
+  }
+  .mobile-nav ul.menu  li.menu-item-has-children li.menu-item-has-children a.navdrop{
+    background:lighten($mobilebg, 20%);
   }
   .toggle-menu { 
     font-size: 1.5em;
@@ -211,9 +220,6 @@ ul.menu {
   }
   #main-nav-check:checked ~ #mobile-nav a {
     line-height: 3em;
-    border-top: 1px solid #484848;
-    border-right: 1px solid #484848;
-    border-bottom: 1px solid #2E2E2E;
   }
   #main-nav-check:checked ~ .toggle-menu:before {
     content: "\f056";
