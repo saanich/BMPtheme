@@ -113,15 +113,16 @@
           display: block;
           font-size: inherit; 
           color: #fff;
+          border: 1px solid darken($mobilebg, 5%);
         }
       }
       li.menu-item-has-children > a{
-        width:86%;
+        width:73%;
         float:left;
       }
       li.menu-item-has-children a.navdrop,
       li.menu-item-has-children a.navdropover{
-        width: 12%;
+        width: 25%;
         text-indent: 0px;
         float:right;
         font-family:'FontAwesome';
@@ -166,15 +167,17 @@
           a{
           color:$nav_color;  
           text-indent: 10px;
+          border: 0 solid lighten($mobilebg, 15%);
           &:before{content: "- ";}
           }
         } 
-        ul.sub-menu{ 
-          margin:  0; 
-          position: relative; 
+        ul.sub-menu{
+          margin:  0;
+          position: relative;
           li {
             background:lighten($mobilebg, 20%);
             a{ 
+            border: 0 solid lighten($mobilebg, 25%);
             text-indent: 20px;
             &:before{content: "-- ";}
             }
@@ -185,6 +188,7 @@
             li {
               background:lighten($mobilebg, 30%);
               a{ 
+              border: 0 solid lighten($mobilebg, 35%);
               text-indent: 30px;
               &:before{content: "--- ";}
               }
@@ -225,55 +229,37 @@
 
   /* Mobile navigation Animations
   ================================== */
-  #main-nav-check ~ .mobile-nav ul.menu li a {
-    line-height: 0em;
-    border-bottom: 0px solid darken($mobilebg, 10%);
-    transition: all 0.3s ease;
-  }
-  #main-nav-check:checked ~ .mobile-nav ul.menu li a {
-    line-height: 3em;
-    border-bottom: 1px solid darken($mobilebg, 10%);
-    transition: all 0.3s ease;
-  }
-  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdrop,
-  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdropover{
-    line-height: 2.75em;
-    border-width:0.25em 0 0 0;
-    transition: all 0.3s ease;
-  }
 
-
-  #main-nav-check:checked ~ .mobile-nav ul.subhide li a,
-  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a,
-  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a
-  {
-    line-height: 0;
-    border-bottom: 0 solid darken($mobilebg, 10%);
-    transition: all 0.3s ease;
+  #main-nav-check:checked ~ .toggle-menu:before {
+    content: "\f056";
   }
-  #main-nav-check:checked ~ .mobile-nav ul.subshow li a{
-    line-height: 3em;
-    border-bottom: 1px solid darken($mobilebg, 10%);
-    transition: all 0.3s ease;
-  }
-  #main-nav-check:checked ~ .mobile-nav ul.subhide li a.navdrop,
-  #main-nav-check:checked ~ .mobile-nav ul.subhide li a.navdropover,
-  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a.navdrop,
-  #main-nav-check:checked ~ .mobile-nav ul.subshow ul.subhide li a.navdropover, 
-  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a.navdrop,
-  #main-nav-check:checked ~ .mobile-nav ul.subhide ul.subshow li a.navdropover {
+  #main-nav-check ~ .mobile-nav ul.menu li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide li a.navdropover,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow ul.subhide li a.navdropover, 
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a.navdropover {
     border-width:0;
     line-height:0;
     transition: all 0.3s ease;
   }
-  #main-nav-check:checked ~ .mobile-nav ul.subshow li a.navdrop,
-  #main-nav-check:checked ~ .mobile-nav ul.subshow li a.navdropover{
-    border-width:0.25em 0 0 0;
-    line-height: 2.75em;
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdropover,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a.navdrop,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a.navdropover{
+    border-width:1.25em 0 0 0;
+    line-height: 1.75em;
+    transition: all 0.3s ease;
+    border-bottom:1px solid transparent;
+  }
+  #main-nav-check:checked ~ .mobile-nav ul.menu li a,
+  #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a {
+    line-height: 3em;
+    border-width:0 0 1px 0;
     transition: all 0.3s ease;
   }
-
-  #main-nav-check:checked ~ .toggle-menu:before {
-    content: "\f056";
-    }
 }

@@ -1,13 +1,11 @@
 $(document).ready(function(){
-		$('.menu li ul.sub-menu').attr('class', 'sub-menu subhide');				   
-		
+		$('.menu li ul.sub-menu').attr('class', 'sub-menu subhide');	
 		$('.main-nav .menu li').hover(
 			function() { $('> ul', this).attr('class', 'sub-menu subshow');},
 			function() { $('> ul', this).attr('class', 'sub-menu');}
 		);
 
 		$('.mobile-nav .menu li.menu-item-has-children').prepend( "<a href='#' class='navdrop'><span>subnav</span></a>" );
-
 		$('.mobile-nav .menu .navdrop').toggle(
 			function() { $('~ ul', this).attr('class', 'sub-menu subshow');},
 			function() { $('~ ul', this).attr('class', 'sub-menu subhide');}
