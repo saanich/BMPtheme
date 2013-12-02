@@ -191,4 +191,77 @@ function kriesi_pagination($pages = '', $range = 2)
         
      }
 }
+
+// Removes posts and pages from menu options in dashboard for those that aren't administrator.
+// ======================================================= 
+
+function remove_menus () {
+    if(!current_user_can('administrator'))
+    {
+        remove_menu_page( 'wpcf7' );                      //Contactform 7
+        remove_menu_page( 'edit.php' );                   //Posts
+        remove_menu_page( 'upload.php' );                 //Media
+        remove_menu_page( 'edit.php?post_type=page' );    //Pages
+        remove_menu_page( 'edit-comments.php' );          //Comments
+        remove_menu_page( 'themes.php' );                 //Appearance
+        remove_menu_page( 'plugins.php' );                //Plugins
+        remove_menu_page( 'users.php' );                  //Users
+        remove_menu_page( 'tools.php' );                  //Tools
+        remove_menu_page( 'options-general.php' );        //Settings  
+        add_filter('screen_options_show_screen', 'remove_screen_options');
+    }
+}
+add_action('admin_menu', 'remove_menus');
+
+// Removes admin bar menus for those that aren't administrator.
+// =======================================================
+
+function admin_bar_edit() {
+    if(!current_user_can('administrator'))
+    {
+        global $wp_admin_bar;
+        $wp_admin_bar->remove_menu('wp-logo');
+        $wp_admin_bar->remove_menu('my-account-with-avatar'); 
+        $wp_admin_bar->remove_menu('edit-profile');
+        $wp_admin_bar->remove_menu('search');
+        $wp_admin_bar->remove_menu('edit');
+        $wp_admin_bar->remove_menu('new-content');
+        $wp_admin_bar->remove_menu('new-post'); 
+        $wp_admin_bar->remove_menu('new-page'); 
+        $wp_admin_bar->remove_menu('new-media');
+        $wp_admin_bar->remove_menu('new-link'); 
+        $wp_admin_bar->remove_menu('new-user'); 
+        $wp_admin_bar->remove_menu('new-theme'); 
+        $wp_admin_bar->remove_menu('new-plugin');
+        $wp_admin_bar->remove_menu('comments');
+    }
+}
+
+// Adds topbar menus
+// =======================================================
+
+add_action( 'wp_before_admin_bar_render', 'admin_bar_edit' );
+
+function admin_bar_sitelink() {
+    global $wp_admin_bar;
+    $wp_admin_bar->add_menu( array(  
+        'id' => 'backhome', 
+        'title' => __('Saanich main website'),  
+        'href' => ('http://saanich.ca') 
+        ) 
+    ); 
+}
+add_action( 'wp_before_admin_bar_render', 'admin_bar_sitelink' );
+
+// Change welcome text
+// =======================================================
+
+function custom_howdy( $text ) {
+    $greeting = 'Welcome, you are logged in';
+    if ( is_admin() ) {
+        $text = str_replace( 'Howdy', $greeting, $text );
+    }
+    return $text;
+}
+add_filter( 'gettext', 'custom_howdy' );
 ?>

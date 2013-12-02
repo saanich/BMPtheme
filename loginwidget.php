@@ -53,6 +53,7 @@ class wp_my_plugin extends WP_Widget {
 			echo '<li class="loggedin">';
 			echo wp_loginout('/');
 			echo '</li>';
+			echo '<li><a href="https://bmp.saanich.ca/wp-admin/edit.php?post_type=qa_faqs">Edit or add BMPS</a></li>';
 		} else {
 			echo '<li class="loggedout"><a href="https://bmp.saanich.ca/wp-login.php">Log in</a></li>';
 		}
