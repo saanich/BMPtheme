@@ -296,3 +296,21 @@ a[href $='.pdf']:hover:after {
 .subcol ul li.loggedout a		{color:#ffb900;}
 .subcol ul li.loggedout a:hover,
 .subcol ul li.loggedin a:hover 	{color:#000;}
+
+#wp-admin-bar-backhome{
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+	display:none;
+	}
+}
+
+.hideitem {
+	border-width:0;
+	display:none;
+	transition: all 0.3s ease;
+}
+
+.showitem {
+	border-width:0 0 2px 0;;
+	display:block;
+	transition: all 0.3s ease;
+}

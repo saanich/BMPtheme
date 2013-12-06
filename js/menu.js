@@ -14,4 +14,9 @@ $(document).ready(function(){
 			function() { $(this).attr('class','navdropover');},
 			function() { $(this).attr('class','navdrop');}
 		);
+		/*$('.qa-faq-title').attr('class', 'hideitem');
+		$('.faq-catname').toggle(
+			function() { $('~ .qa-faq-title', this).attr('class','showitem');},
+			function() { $('~ .qa-faq-title', this).attr('class','hideitem');}
+		);*/
 	});

@@ -1,5 +1,7 @@
 <?php
 
+
+// =======================================================
 // Register some sidebars
 // =======================================================
  register_sidebar(array(
@@ -42,6 +44,8 @@
  'after_title' => '</h3>',
  ));
 
+
+// =======================================================
 // Login Script and logo change
 // ======================================================= 
 function my_login_logo() { ?>
@@ -65,6 +69,8 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+
+// =======================================================
 // Login redirects to front page, not dashboard
 // ======================================================= 
 function admin_default_page() {
@@ -74,10 +80,13 @@ function admin_default_page() {
 add_filter('login_redirect', 'admin_default_page');
 
 
+// =======================================================
 // Add featured image support
 // ======================================================= 
 add_theme_support( 'post-thumbnails' ); 
 
+
+// =======================================================
 // Change the [...] at the end of the excerpt
 // ======================================================= 
 function new_excerpt_more( $more ) {
@@ -85,6 +94,8 @@ function new_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+
+// =======================================================
 // Change the length the excerpt
 // ======================================================= 
 function custom_excerpt_length( $length ) {
@@ -92,6 +103,8 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+
+// =======================================================
 // Register two menus
 // ======================================================= 
 function register_my_menus() {
@@ -104,10 +117,10 @@ function register_my_menus() {
 }
 add_action( 'init', 'register_my_menus' );
 
+
+// =======================================================
 // Custom Nav
 // ======================================================= 
-
-
 add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
 function add_loginout_link( $items, $args ) {
     if (is_user_logged_in() && $args->theme_location == 'default') {
@@ -119,9 +132,10 @@ function add_loginout_link( $items, $args ) {
     return $items;
 }
 
+
+// =======================================================
 // Remove custom post_type from search results
 // ======================================================= 
-
 function searchfilter($query) {
 
     if ($query->is_search && !is_admin() ) {
@@ -135,6 +149,8 @@ return $query;
 
 add_filter('pre_get_posts','searchfilter');
 
+
+// =======================================================
 // Variable & intelligent excerpt length.
 // ======================================================= 
 function print_excerpt($length) { // Max excerpt length. Length is set in characters
@@ -155,8 +171,6 @@ function print_excerpt($length) { // Max excerpt length. Length is set in charac
         echo apply_filters('the_excerpt',$text);
     }
 }
-
-// Returns the portion of haystack which goes until the last occurrence of needle
 function reverse_strrchr($haystack, $needle, $trail) {
     return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
 }
@@ -192,6 +206,8 @@ function kriesi_pagination($pages = '', $range = 2)
      }
 }
 
+
+// =======================================================
 // Removes posts and pages from menu options in dashboard for those that aren't administrator.
 // ======================================================= 
 
@@ -201,7 +217,7 @@ function remove_menus () {
         remove_menu_page( 'wpcf7' );                      //Contactform 7
         remove_menu_page( 'edit.php' );                   //Posts
         remove_menu_page( 'upload.php' );                 //Media
-        remove_menu_page( 'edit.php?post_type=page' );    //Pages
+        //remove_menu_page( 'edit.php?post_type=page' );    //Pages
         remove_menu_page( 'edit-comments.php' );          //Comments
         remove_menu_page( 'themes.php' );                 //Appearance
         remove_menu_page( 'plugins.php' );                //Plugins
@@ -213,7 +229,10 @@ function remove_menus () {
 }
 add_action('admin_menu', 'remove_menus');
 
-// Removes admin bar menus for those that aren't administrator.
+
+
+// =======================================================
+// Removes admin bar menus for those that aren't administrator, but are editor.
 // =======================================================
 
 function admin_bar_edit() {
@@ -237,6 +256,17 @@ function admin_bar_edit() {
     }
 }
 
+// =======================================================
+// Adds topbar menus
+// =======================================================
+add_action('set_current_user', 'csstricks_hide_admin_bar');
+function csstricks_hide_admin_bar() {
+  if (current_user_can('subscriber')) {
+    show_admin_bar(false);
+  }
+}
+
+// =======================================================
 // Adds topbar menus
 // =======================================================
 
@@ -253,15 +283,193 @@ function admin_bar_sitelink() {
 }
 add_action( 'wp_before_admin_bar_render', 'admin_bar_sitelink' );
 
+
+// =======================================================
 // Change welcome text
 // =======================================================
 
 function custom_howdy( $text ) {
-    $greeting = 'Welcome, you are logged in';
-    if ( is_admin() ) {
+    $greeting = 'You are logged in';
+    if (!current_user_can('administrator') ) {
         $text = str_replace( 'Howdy', $greeting, $text );
     }
     return $text;
 }
 add_filter( 'gettext', 'custom_howdy' );
+
+
+// =======================================================
+// Remove widgets from the dashboard.
+// =======================================================
+
+function remove_dashboard_widgets() {
+    if(!current_user_can('administrator'))
+    {
+    remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); // Recent Comments
+    remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
+    remove_meta_box('dashboard_plugins', 'dashboard', 'normal');   // Plugins
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
+    remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');  // Recent Drafts
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
+    remove_meta_box('dashboard_secondary', 'dashboard', 'side');   // Other WordPress News
+    // use 'dashboard-network' as the second parameter to remove widgets from a network dashboard.
+    } 
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+
+
+// =======================================================
+// Add a widget to the dashboard.
+// =======================================================
+
+function bmp_add_dashboard_widgets() {
+
+    wp_add_dashboard_widget(
+                 'bmp_dashboard_widget',            // Widget slug.
+                 'How to add BMPs',    // Title.
+                 'bmp_dashboard_widget_function'    // Display function.
+        );  
+}
+add_action( 'wp_dashboard_setup', 'bmp_add_dashboard_widgets' );
+function bmp_dashboard_widget_function() {
+    echo "
+    <h1>Adding a BMP</h1>
+    <p>To add a BMP, hover over, or click on the BMP menu to the left.</p>
+    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/post-new.php?post_type=qa_faqs'>Add New</a>. In the Add BMP screen, you will be asked to enter a <strong>title</strong>, a <strong>short description</strong>, a  <strong>PDF file</strong> and <strong>select a category</strong>.</p>
+    
+    <h2>The title</h2>
+    <p>The title is the title of the PDF document you are adding. This title will also be displayed on the page beneath the BMP category.</p>
+    
+    <h2>The short description</h2>
+    <p>The short description contains information about the BMP. This is typically found on the BMP's PDF document cover page.</p>
+    <p>Most BMP descriptions are sorted into categories. The <strong>description itself</strong>, the <strong>source</strong>, <strong>keywords</strong> and <strong>additional resources</strong> may be found on the BMPs</p>
+    <p>Each of these sections is preceded by a <strong>header</strong>, or an <code>H4</code>. When creating the content for the BMPs type out the headings for descriptions, keywords and resources as <em>plain text</em> first. </p>
+    <p>In between each of the paragraph headings, type in plan text the descriptions, keywords and resources themselves. Each of these are also in their own paragraph.</p>
+    <p>When you are done, you will have several paragraphs of plain text. It will look something like this:</p>
+    <pre>
+    Description
+
+    A temporary measure to settle sediment and fine particulates by slowing the movement of water within a small channel.
+    
+    Source
+
+    Salix Applied Earthcare
+    
+    Keywords
+
+    Check Dam, Velocity reduction, Sediment, Open Channel, Swale
+    
+    Additional Resources
+
+    Salix Applied Earthcare Erosion Draw 5.0
+    </pre>
+    <p>Select each of the paragraphs, one at a time and convert them into headers. Select your first header and use the <em>format</em> dropdown from the top left of the short description input box, and chose <strong>heading 4</strong>. Do this to the rest of the headers.</p>
+    
+    <h2>Add the PDF file</h2>
+    <p>Create a new paragraph at the bottom of the description. Ensure the cursor is flashing at the new paragraph at the bottom of the text.</p>
+    <p>Click on the <strong>Add Media</strong> button, and a file browser will open. Here you can drag and drop in the PDF you are linking to, or use the file browser to locate the file on your hard drive.</p>
+    <p>Once the file is uploaded you will be given the chance to give the file a title. Be sure to give it a readable title (remove the _ and other symbols found in the original file name). Adding a file description, and title can be found on the right hand side of the file uplod screen.</p>
+    <p>Add in a caption and a description for the file. I usually copy and paste from the title. The Attachment display settings allow you to chose where it will link to: <strong>Media file</strong> or <strong>post page</strong>. In the BMP site, we are going to link it to the Media File, so our engineers can download it directly</p>
+    <p>The text and icon for the PDF is appended to the name automatically, when viewed on the front end of the site.</p>
+    <h2>Select the category</h2>
+    <p>On the right hand side of the screen, you will find a list of all the categories. Select the category the BMP belongs to by checking the box next to it.</p> 
+    <p>If additional categories are needed, you can create a new one by selecting <strong>Add New BMP Category</strong>.</p>
+    ";
+} 
+
+function bmp_edit_dashboard_widgets() {
+
+    wp_add_dashboard_widget(
+                 'bmpedit_dashboard_widget',            // Widget slug.
+                 'How to edit BMPs',                    // Title.
+                 'bmpedit_dashboard_widget_function'    // Display function.
+        );  
+}
+add_action( 'wp_dashboard_setup', 'bmp_edit_dashboard_widgets' );
+function bmpedit_dashboard_widget_function() {
+    echo "
+
+    <h1>Editing a BMP</h1>
+    <p>To edit a BMP, hover over, or click on the BMP menu to the left.</p>
+    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/edit.php?post_type=qa_faqs'>BMPS</a>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
+    <p>Click on the file you wish to edit, and use the guidelines for adding a BMP to edit the BMP, or add a new file.</p>
+    ";
+} 
+function bmp_delete_dashboard_widgets() {
+
+    wp_add_dashboard_widget(
+                 'bmpdelete_dashboard_widget',            // Widget slug.
+                 'How to delete BMPs',                    // Title.
+                 'bmpdelete_dashboard_widget_function'    // Display function.
+        );  
+}
+add_action( 'wp_dashboard_setup', 'bmp_delete_dashboard_widgets' );
+function bmpdelete_dashboard_widget_function() {
+    echo "
+    <h1>Deleting a BMP</h1>
+    <p>To erase a BMP, hover over, or click on the BMP menu to the left.</p>
+    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/edit.php?post_type=qa_faqs'>BMPS</a>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
+    <p>When you hover over a file name, a <span class='trash'><a href='#'>red link that says Trash</a></span> is shown, click on the link to delete the BMP.</p>
+    <p>A yellow box will confirm that you have trashed the file, and will give you a chance to undo. Trashed files are found in the trash section of the BMPS and you will need to empty the trash if you wish to use the same file name.</p>
+    ";
+} 
+// Register Custom Post Type
+
+//This wan an experiment with settin gmy own custom post tyle, but it wasn't good enough. I needed something bigger so a custom post type plugin was created.
+
+
+function BMPs() {
+
+  $labels = array(
+    'name'                => _x( 'BMPs', 'Post Type General Name', 'text_domain' ),
+    'singular_name'       => _x( 'BMP', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'           => __( 'BMPs', 'text_domain' ),
+    'parent_item_colon'   => __( 'Parent BMP:', 'text_domain' ),
+    'all_items'           => __( 'All BMPs', 'text_domain' ),
+    'view_item'           => __( 'View BMPs', 'text_domain' ),
+    'add_new_item'        => __( 'Add New BMP', 'text_domain' ),
+    'add_new'             => __( 'New BMP', 'text_domain' ),
+    'edit_item'           => __( 'Edit BMP', 'text_domain' ),
+    'update_item'         => __( 'Update BMP', 'text_domain' ),
+    'search_items'        => __( 'Search BMPs', 'text_domain' ),
+    'not_found'           => __( 'No BMPs found', 'text_domain' ),
+    'not_found_in_trash'  => __( 'No BMPs found in Trash', 'text_domain' ),
+  );
+  $rewrite = array(
+    'slug'                => 'bmps',
+    'with_front'          => true,
+    'pages'               => true,
+    'feeds'               => true,
+  );
+  $args = array(
+    'label'               => __( 'BMP', 'text_domain' ),
+    'description'         => __( 'BMP information pages', 'text_domain' ),
+    'labels'              => $labels,
+    'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+    'taxonomies'          => array( 'bmps', 'post_tag', 'category' ),
+    'hierarchical'        => false,
+    'public'              => true,
+    'show_ui'             => true,
+    'show_in_menu'        => true,
+    'show_in_nav_menus'   => true,
+    'show_in_admin_bar'   => true,
+    'menu_position'       => 5,
+    'menu_icon'           => '',
+    'can_export'          => true,
+    'has_archive'         => true,
+    'exclude_from_search' => false,
+    'publicly_queryable'  => true,
+    'rewrite'             => $rewrite,
+    'capability_type'     => 'post'
+  );
+  register_post_type( 'BMPs', $args );
+  flush_rewrite_rules();
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'BMPs', 0 );
+
 ?>
