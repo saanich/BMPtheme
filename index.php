@@ -26,6 +26,7 @@
             </div>
             <?php endif; ?> 
             <h3 class="headline"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
+            
             <?php print_excerpt(500); ?>
             <div class="excerpt"><span>…</span></div>
           </div>

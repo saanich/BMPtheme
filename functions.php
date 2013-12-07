@@ -416,10 +416,6 @@ function bmpdelete_dashboard_widget_function() {
     ";
 } 
 // Register Custom Post Type
-
-//This wan an experiment with settin gmy own custom post tyle, but it wasn't good enough. I needed something bigger so a custom post type plugin was created.
-
-
 function BMPs() {
 
   $labels = array(
@@ -444,7 +440,7 @@ function BMPs() {
     'feeds'               => true,
   );
   $args = array(
-    'label'               => __( 'BMP', 'text_domain' ),
+    'label'               => __( 'BMPs', 'text_domain' ),
     'description'         => __( 'BMP information pages', 'text_domain' ),
     'labels'              => $labels,
     'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
@@ -465,11 +461,20 @@ function BMPs() {
     'capability_type'     => 'post'
   );
   register_post_type( 'BMPs', $args );
-  flush_rewrite_rules();
 
 }
 
 // Hook into the 'init' action
 add_action( 'init', 'BMPs', 0 );
+
+// Add custom post taxomomies to the standard categories and tags
+function add_custom_types_to_tax( $query ) {
+  if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+    $post_types = get_post_types();
+    $query->set( 'post_type', $post_types );
+      return $query;
+  }
+}
+add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
 
 ?>
