@@ -44,6 +44,27 @@
  'after_title' => '</h3>',
  ));
 
+register_sidebar(array(
+ 'name' => __( 'Under the logo - logged in' ),
+ 'id' => 'insidepage2',
+ 'description' => __( 'This will be displayed under the logo only if you are logged in.' ),
+ 'before_widget' => '<div>',
+ 'after_widget' => '</div>',
+ 'before_title' => '<h3>',
+ 'after_title' => '</h3>',
+ ));
+
+
+register_sidebar(array(
+ 'name' => __( 'The search bar for the BMPS' ),
+ 'id' => 'bmpsearch',
+ 'description' => __( 'This is found on the category and tag listing pages for BMPs' ),
+ 'before_widget' => '<div>',
+ 'after_widget' => '</div>',
+ 'before_title' => '<h3>',
+ 'after_title' => '</h3>',
+ ));
+
 
 // =======================================================
 // Login Script and logo change
@@ -139,15 +160,17 @@ function add_loginout_link( $items, $args ) {
 function searchfilter($query) {
 
     if ($query->is_search && !is_admin() ) {
-        $query->set('post_type',array('post','page'));
+        $query->set('post_type',array('page'));
     }
     if ($query->is_search && is_user_logged_in() ) {
-        $query->set('post_type',array('post','page','qa_faqs'));
+        $query->set('post_type',array('bmps','tag','tag_id'));
     }
 return $query;
 }
 
 add_filter('pre_get_posts','searchfilter');
+
+
 
 
 // =======================================================
@@ -327,9 +350,9 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 function bmp_add_dashboard_widgets() {
 
     wp_add_dashboard_widget(
-                 'bmp_dashboard_widget',            // Widget slug.
-                 'How to add BMPs',    // Title.
-                 'bmp_dashboard_widget_function'    // Display function.
+                 'bmp_dashboard_widget',              // Widget slug.
+                 'How to add BMPs',                   // Title.
+                 'bmp_dashboard_widget_function'      // Display function.
         );  
 }
 add_action( 'wp_dashboard_setup', 'bmp_add_dashboard_widgets' );
@@ -415,7 +438,12 @@ function bmpdelete_dashboard_widget_function() {
     <p>A yellow box will confirm that you have trashed the file, and will give you a chance to undo. Trashed files are found in the trash section of the BMPS and you will need to empty the trash if you wish to use the same file name.</p>
     ";
 } 
+
+// =======================================================
 // Register Custom Post Type
+// =======================================================
+
+
 function BMPs() {
 
   $labels = array(
@@ -434,7 +462,7 @@ function BMPs() {
     'not_found_in_trash'  => __( 'No BMPs found in Trash', 'text_domain' ),
   );
   $rewrite = array(
-    'slug'                => 'bmps',
+    'slug'                => 'bmparchive',
     'with_front'          => true,
     'pages'               => true,
     'feeds'               => true,
@@ -452,7 +480,7 @@ function BMPs() {
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
     'menu_position'       => 5,
-    'menu_icon'           => '',
+    'menu_icon'           => get_bloginfo('template_directory'). '/images/favicon-16x16.png',
     'can_export'          => true,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -467,7 +495,9 @@ function BMPs() {
 // Hook into the 'init' action
 add_action( 'init', 'BMPs', 0 );
 
+// =======================================================
 // Add custom post taxomomies to the standard categories and tags
+// =======================================================
 function add_custom_types_to_tax( $query ) {
   if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
     $post_types = get_post_types();
@@ -476,5 +506,4 @@ function add_custom_types_to_tax( $query ) {
   }
 }
 add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
-
 ?>

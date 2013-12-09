@@ -113,14 +113,14 @@ $menuitem_width:
 -
 ($margin_width * ($number_of_columns + 1) / $number_of_columns)
 ;
-
-ul.menu {margin:0;
-  li {margin:0 $margin_width 0 0; width:$menuitem_width}
-  li:last-child{margin:0}
-  ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;
-  }
+.navarea {
+    ul.menu {margin:0;
+      li {margin:0 $margin_width 0 0; width:$menuitem_width}
+      li:last-child{margin:0}
+      ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;
+      }
+    }
 }
-
 /*
  _______  _______  _______  _______ 
 (       )(  ___  )(       )(  ___  )
@@ -198,11 +198,12 @@ $menuitem_width:
 ($margin_width * ($number_of_columns + 1) / $number_of_columns)
 ;
 
-
+.navarea {
     ul.menu {margin:0;
       li {margin:0 $margin_width 0 0; width:$menuitem_width}
       ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;}
     }
+}
 
 }
 /* #Tablet (Portrait)

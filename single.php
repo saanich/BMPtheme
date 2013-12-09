@@ -20,7 +20,20 @@
             </div>
           <?php endif; ?>
           <?php the_content(); ?>
-          <?php comments_template(); ?>
+          <h4>Category</h4>
+          <?php
+          $categories = get_the_category();
+          $separator = ' ';
+          $output = '';
+          if($categories){
+            foreach($categories as $category) {
+              $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
+            }
+          echo trim($output, $separator);
+          }
+          ?>
+          <h4>Tags</h4>
+          <?php the_tags('', ', ', '<br />'); ?> 
         </div>
       <?php endwhile; ?>   
 

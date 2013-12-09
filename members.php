@@ -28,7 +28,7 @@ Template Name: Members only page
             <?php the_content(); ?>
           </div>
         <?php endwhile; ?>   
-      <?php } else { // they aren't logged in, so show them the login form ?>
+      <?php } else { ?>
       <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
       <div class="contentarea">
         <p>I'm sorry, but you must be logged in to view this page.</p>
