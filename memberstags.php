@@ -14,24 +14,26 @@ Template Name: Members only tags list.
     <div class="col spantwo maincol">
       <?php if (is_user_logged_in()) { ?>
         <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
-        <form method="get" id="searchform" action="http://bmp.saanich.ca">
-        <div>
-        <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
-        <input type="submit" class="submit" name="Submit" value="Search Site">
-        <input type="hidden" name="post_type" value="bmparchive" />
-        </div>
+             <form method="get" id="searchform" class="searchbmps" action="/">
+          <div>
+          <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
+          <input type="submit" class="submit" name="Submit" value="Search BMPs">
+          <input type="hidden" name="post_type" value="bmparchive" />
+          </div>
         </form>
 
 
 
 
         <div class="contentarea">
+        <div class="tags">
         <?php
         $tags = get_tags($args);
           foreach($tags as $tag) { 
-            echo '<h2><span><a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a></span></h2> ';
+            echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
          } 
         ?>
+        </div>  
         </div>  
         <?php if ( $wp_query->max_num_pages > 1 ) : ?> 
           <div class="pagination"> 

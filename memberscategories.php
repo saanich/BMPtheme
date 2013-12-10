@@ -14,12 +14,12 @@ Template Name: Members only categories list.
     <div class="col spantwo maincol">
       <?php if (is_user_logged_in()) { ?>
         <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
-         <form method="get" id="searchform" action="http://bmp.saanich.ca">
-        <div>
-        <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
-        <input type="submit" class="submit" name="Submit" value="Search Site">
-        <input type="hidden" name="post_type" value="bmparchive" />
-        </div>
+        <form method="get" id="searchform" class="searchbmps" action="/">
+          <div>
+          <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
+          <input type="submit" class="submit" name="Submit" value="Search BMPs">
+          <input type="hidden" name="post_type" value="bmparchive" />
+          </div>
         </form>
         <div class="contentarea">
         

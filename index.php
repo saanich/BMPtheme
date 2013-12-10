@@ -2,13 +2,15 @@
   <!-- INDEX -->
   <div class="main container fourcol">
     <div class="col subcol">
-      <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
+      <h1 class="pagetitle"><span>Search Results</span></h1>
       <h1 class="logo"><a href="<?php bloginfo('url'); ?>" ><span><?php bloginfo('name'); ?></span></a></h1>
+
       <?php dynamic_sidebar('underlogo') ?>
     </div>
-    <div class="col spantwo maincol">
+    <div class="col spantwo maincol"><h1 class="pagetitle"><span>Search Results</span></h1>  
       <?php if (have_posts()) : ?>
-        <?php while (have_posts()) : the_post(); ?>     
+        <?php while (have_posts()) : the_post(); ?>   
+          
           <div class="contentarea">
           <!-- If there's a post thumbnail, add it at the specified size -->
           <?php if (has_post_thumbnail()) : ?>
@@ -26,11 +28,11 @@
             </div>
             <?php endif; ?> 
             <h3 class="headline"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
-            <?php print_excerpt(500); ?>
-            <div class="excerpt"><span>…</span></div>
+            <?php print_excerpt(5000); ?>
+            <a href="<?php the_permalink(); ?>" class="more-link">View BMP</a>
           </div>
           <!-- Add the The Permalink to the article -->
-          <a href="<?php the_permalink(); ?>" class="more-link">Read More</a>
+          
         <?php endwhile; ?> 
       <?php else : ?>
             <h1 class="pagetitle"><span><?php _e('Sorry!'); ?></span></h1>

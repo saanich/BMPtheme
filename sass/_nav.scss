@@ -1,6 +1,6 @@
 /* Main navigation
 ================================================== */
-@media only screen and (min-width: $teenbreak) {
+
   nav {}
   .main-nav-check,
   .mobile-nav ,
@@ -71,7 +71,7 @@
       }    
     }
   }
-}
+
 /* Mobile navigation
 ================================================================================================ */
 @media only screen and (max-width: $teenbreak) {

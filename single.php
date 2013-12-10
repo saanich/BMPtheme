@@ -4,6 +4,7 @@
       <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
       <h1 class="logo"><a href="<?php bloginfo('url'); ?>" ><span><?php bloginfo('name'); ?></span></a></h1>
       <?php dynamic_sidebar('underlogo') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepage2'); } ?>
     </div>
     <div class="col spantwo maincol">
       <?php while (have_posts()) : the_post(); ?>
@@ -20,20 +21,24 @@
             </div>
           <?php endif; ?>
           <?php the_content(); ?>
-          <h4>Category</h4>
+          <h3>Category</h3>
           <?php
           $categories = get_the_category();
           $separator = ' ';
           $output = '';
           if($categories){
+
             foreach($categories as $category) {
               $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
             }
+          echo '<div class="categories">';
           echo trim($output, $separator);
+          echo '</div>';
           }
           ?>
-          <h4>Tags</h4>
-          <?php the_tags('', ', ', '<br />'); ?> 
+          <h3>Tags</h3>
+          <?php the_tags('<div class="tags">', ' ', '</div>'); ?> 
+          
         </div>
       <?php endwhile; ?>   
 
