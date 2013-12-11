@@ -538,4 +538,33 @@ function add_custom_types_to_tax( $query ) {
   }
 }
 add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
+
+/*/ =======================================================
+// Rename Posts to BMPs
+// =======================================================
+add_action( 'admin_menu', 'change_post_menu_label' );
+add_action( 'init', 'change_post_object_label' );
+function change_post_menu_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'BMPs';
+    $submenu['edit.php'][5][0] = 'BMPs';
+    $submenu['edit.php'][10][0] = 'Add BMPs';
+    $submenu['edit.php'][16][0] = 'BMPs Tags';
+    echo '';
+}
+function change_post_object_label() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'BMPs';
+    $labels->singular_name = 'BMPs';
+    $labels->add_new = 'Add BMPs';
+    $labels->add_new_item = 'Add BMPs';
+    $labels->edit_item = 'Edit BMPs';
+    $labels->new_item = 'BMPs';
+    $labels->view_item = 'View BMPs';
+    $labels->search_items = 'Search BMPs';
+    $labels->not_found = 'No BMPs found';
+    $labels->not_found_in_trash = 'No BMPs found in Trash';
+}*/
 ?>

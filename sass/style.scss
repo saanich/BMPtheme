@@ -151,6 +151,9 @@ body {
 }
 
 form.searchbmps{
+	.subcol & {
+		margin:25px 0 0 0;
+	}
 	@media only screen and (min-width:0) and (max-width: $teenbreak) {
 		display:none;
 		}
@@ -231,7 +234,8 @@ h1.pagetitle,h2,h3{
 	}
 .contentarea h1.pagetitle,
 .contentarea h2,
-.contentarea h3{
+.contentarea h3,
+.contentarea h4{
 	background:none;
 	color:$darkcolor;
 	font-family:$googlefont1;
@@ -257,7 +261,6 @@ h1.pagetitle,h2,h3{
 	}
 }
 .contentarea h4{
-	font-size:1em;
 	color:$darkcolor;
 	border-width:0;
 	a {
@@ -350,28 +353,6 @@ a[href $='.pdf']:hover:after {
 }
 
 
-.tags{
-	overflow:hidden;
-	text-align: justify;
-	
-	a{
-		border:1px solid #dfdfdf;
-		margin:.5em 0;
-		padding:.2em .4em;
-		vertical-align: top;
-		text-align:center;
-		display: inline-block;
-		line-height: 3em;
-		text-decoration: none;
-		overflow: hidden;
-		background:#dedee5;
-		&:hover{
-			background: $body_link_color;
-			color:black;
-		}
-	}
-}
-
 
 
 .categories{
@@ -387,11 +368,81 @@ a[href $='.pdf']:hover:after {
 		line-height: 35px;
 		text-decoration: none;
 		overflow: hidden;
-		background:#dedee5;
+		background:rgba( 230, 240, 235, 1);
 		width: 100%;
 		&:hover{
 			background: $body_link_color;
 			color:black;
 		}
 	}
+}
+
+.bmplist{
+	overflow:hidden;
+	a{
+		border:1px solid #dfdfdf;
+		margin:.5em 0;
+		padding:.2em 0;
+		display: block;
+		vertical-align: top;
+		float:left;
+		text-align:center;
+		line-height: 35px;
+		text-decoration: none;
+		overflow: hidden;
+		background:rgba(235, 230, 240, 1);
+		width: 100%;
+		&:hover{
+			background: $nav_hover_bg;
+		color:black;
+		}
+	}
+}
+
+
+.tags{
+	overflow:hidden;
+	text-align: justify;
+	
+	a{
+		border:1px solid #dfdfdf;
+		margin:.5em 0;
+		padding:.2em .4em;
+		vertical-align: top;
+		text-align:center;
+		display: inline-block;
+		line-height: 3em;
+		text-decoration: none;
+		overflow: hidden;
+		background:rgba(240, 235, 230, 1);
+		&:hover{
+			background: $body_link_color;
+			color:black;
+		}
+	}
+}
+
+.pagination{ 
+	overflow: hidden;
+	text-align: center;
+	padding: 0 1.1em;
+}
+.pagination span,
+.pagination a{ 
+	display: inline-block;	
+	background:rgba(240, 240, 240, 1);
+	margin: 0 0.4em 0 0;
+	padding: .2em 0.8em;
+	text-decoration: none;
+	color: #666;
+	border:1px solid #dfdfdf;
+}
+.pagination a:hover{ 
+	color: #000;
+	background: $body_link_color; 
+}
+
+.pagination .current { 
+	background: $body_link_color;
+	color: #fff; 
 }

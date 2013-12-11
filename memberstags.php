@@ -10,36 +10,32 @@ Template Name: Members only tags list.
       <h1 class="logo"><a href="<?php bloginfo('url'); ?>" ><span><?php bloginfo('name'); ?></span></a></h1>
       <?php dynamic_sidebar('underlogo') ?>
       <?php if (is_user_logged_in()) { dynamic_sidebar('insidepage2'); } ?>
+      <?php if (is_user_logged_in()) { ?>
+      <form method="get" id="searchform" class="searchbmps" action="/">
+        <div>
+        <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
+        <input type="submit" class="submit" name="Submit" value="Search BMPs">
+        <input type="hidden" name="post_type" value="bmparchive" />
+        </div>
+      </form>
+      <?php } ?>
     </div>
     <div class="col spantwo maincol">
       <?php if (is_user_logged_in()) { ?>
         <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
-             <form method="get" id="searchform" class="searchbmps" action="/">
-          <div>
-          <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
-          <input type="submit" class="submit" name="Submit" value="Search BMPs">
-          <input type="hidden" name="post_type" value="bmparchive" />
-          </div>
-        </form>
-
-
-
-
         <div class="contentarea">
-        <div class="tags">
-        <?php
-        $tags = get_tags($args);
-          foreach($tags as $tag) { 
-            echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a>  ';
-         } 
-        ?>
-        </div>  
+          <div class="tags">
+          <?php
+          $tags = get_tags($args);
+            foreach($tags as $tag) { 
+              echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a>  ';
+           } 
+          ?>
+          </div>  
         </div>  
         <?php if ( $wp_query->max_num_pages > 1 ) : ?> 
           <div class="pagination"> 
-            <?php previous_posts_link( __('<< Back') ); ?>
             <?php kriesi_pagination(); ?> 
-            <?php next_posts_link( __('Forward >>') ); ?>
           </div>        
         <?php endif;  ?>
       <?php } else { ?>

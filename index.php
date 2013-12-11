@@ -4,13 +4,11 @@
     <div class="col subcol">
       <h1 class="pagetitle"><span>Search Results</span></h1>
       <h1 class="logo"><a href="<?php bloginfo('url'); ?>" ><span><?php bloginfo('name'); ?></span></a></h1>
-
       <?php dynamic_sidebar('underlogo') ?>
     </div>
     <div class="col spantwo maincol"><h1 class="pagetitle"><span>Search Results</span></h1>  
       <?php if (have_posts()) : ?>
-        <?php while (have_posts()) : the_post(); ?>   
-          
+        <?php while (have_posts()) : the_post(); ?>  
           <div class="contentarea">
           <!-- If there's a post thumbnail, add it at the specified size -->
           <?php if (has_post_thumbnail()) : ?>
@@ -35,16 +33,14 @@
           
         <?php endwhile; ?> 
       <?php else : ?>
-            <h1 class="pagetitle"><span><?php _e('Sorry!'); ?></span></h1>
-            <div class="contentarea"> 
-              <p>I couldn't find the page you were looking for. If you need some help, please contact Environmental Services at 250 475 5471 or by email at <a href="mailt0:plansec@saanich.ca">plansec@saanich.ca.</a></p>
-          </div>
+        <div class="contentarea"> 
+          <h2><span><?php _e('Sorry!'); ?></span></h2>
+          <p>I couldn't find the page you were looking for. If you need some help, please contact Environmental Services at 250 475 5471 or by email at <a href="mailt0:plansec@saanich.ca">plansec@saanich.ca.</a></p>
+        </div>
       <?php endif; ?> 
       <?php if ( $wp_query->max_num_pages > 1 ) : ?> 
         <div class="pagination"> 
-          <?php previous_posts_link( __('<< Back') ); ?>
           <?php kriesi_pagination(); ?> 
-          <?php next_posts_link( __('Forward >>') ); ?>
         </div>
       <?php endif;  ?>
     </div>
