@@ -140,21 +140,6 @@ add_action( 'init', 'register_my_menus' );
 
 
 // =======================================================
-// Custom Nav
-// ======================================================= 
-add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
-function add_loginout_link( $items, $args ) {
-    if (is_user_logged_in() && $args->theme_location == 'default') {
-        $items .= '<li><a href="'. wp_logout_url() .'">Log Out</a></li>';
-    }
-    elseif (!is_user_logged_in() && $args->theme_location == 'default') {
-        $items .= '<li><a href="'. site_url('wp-login.php') .'">Log In</a></li>';
-    }
-    return $items;
-}
-
-
-// =======================================================
 // Remove custom post_type from search results
 // ======================================================= 
 function searchfilter($query) {

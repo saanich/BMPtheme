@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <!-- INDEX -->
+  <!-- CATEGORY TEMPLATE -->
   <div class="main container fourcol">
     <div class="col subcol">
       <h1 class="pagetitle"><span>BMPs by Category</span></h1>
@@ -9,7 +9,7 @@
     </div>
     <div class="col spantwo maincol">
     	<h1 class="pagetitle"><span>BMPs by Category</span></h1>
-            <form method="get" id="searchform" class="searchbmps" action="/">
+        <form method="get" id="searchform" class="searchbmps" action="/">
           <div>
           <input class="text" type="search" placeholder="search BMPs" value=" " name="s" id="s">
           <input type="submit" class="submit" name="Submit" value="Search BMPs">

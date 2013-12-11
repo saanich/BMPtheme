@@ -48,22 +48,23 @@ $teenwidth: 90%;	//tablets portrait all the way down to the smallest phones.
 @import "jquery.fancybox-1.3.4";
 @import "nav";
 @import "layout";
+@import "oldie";
 
 
 
 body {
-	background:lighten( rgba(73,151,187,1), 20% ) ;
-	@media only screen and (min-width: $teenbreak) {
-		background: url(images/background.png) top, -webkit-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* Chrome10+,Safari5.1+ */
-		background: url(images/background.png) top, -moz-linear-gradient(top, rgba(255,255,255,1) 1%, rgba(73,151,187,1) 33%); /* FF3.6+ */
-		background: url(images/background.png) top, -ms-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* IE10+ */
-		background: url(images/background.png) top, -o-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* Opera 11.10+ */
-		background: url(images/background.png) top, linear-gradient(to bottom, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4997bb',GradientType=0 ); /* IE6-9 */
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		}
+	background: lighten( rgba(73,151,187,1), 20% ) ;
+	background: url(images/background.png) top, -webkit-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* Chrome10+,Safari5.1+ */
+	background: url(images/background.png) top, -moz-linear-gradient(top, rgba(255,255,255,1) 1%, rgba(73,151,187,1) 33%); /* FF3.6+ */
+	background: url(images/background.png) top, -ms-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* IE10+ */
+	background: url(images/background.png) top, -o-linear-gradient(top, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* Opera 11.10+ */
+	background: url(images/background.png) top, linear-gradient(to bottom, rgba(255,255,255,1) 1%,rgba(73,151,187,1) 33%); /* W3C */
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	@media only screen and (max-width: $teenbreak) {	
+		background:lighten( rgba(73,151,187,1), 20% ) ;
+	}
 	height: 100%;
 	margin: 0;
 	font: 1em/2em Verdana,Arial,Helvetica,sans-serif;
@@ -178,7 +179,7 @@ form.searchbmps{
 		display:none;
 	}	
 }
-.ie form.searchbmps input[type="search"]{width:95%;}
+
 
 .logo{
 	margin: 0 0 50px 0;
@@ -352,10 +353,11 @@ a[href $='.pdf']:hover:after {
 .tags{
 	overflow:hidden;
 	text-align: justify;
+	
 	a{
 		border:1px solid #dfdfdf;
 		margin:.5em 0;
-		padding:.2em 1em;
+		padding:.2em .4em;
 		vertical-align: top;
 		text-align:center;
 		display: inline-block;
@@ -373,7 +375,7 @@ a[href $='.pdf']:hover:after {
 
 
 .categories{
-overflow:hidden;
+	overflow:hidden;
 	a{
 		border:1px solid #dfdfdf;
 		margin:.5em 0;

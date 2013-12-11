@@ -30,7 +30,7 @@ Template Name: Members only tags list.
         <?php
         $tags = get_tags($args);
           foreach($tags as $tag) { 
-            echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+            echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a>  ';
          } 
         ?>
         </div>  

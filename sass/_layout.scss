@@ -121,14 +121,6 @@ $menuitem_width:
       }
     }
 }
-.ie .navarea {
-    ul.menu {margin:0;
-      li {margin:0 $margin_width 0 0; width:$menuitem_width - 1}
-      li:last-child{margin:0}
-      ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;
-      }
-    }
-}
 /*
  _______  _______  _______  _______ 
 (       )(  ___  )(       )(  ___  )
