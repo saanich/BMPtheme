@@ -30,7 +30,7 @@
             </div>
           <?php endif; ?>
           <?php the_content(); ?>
-          <h3>Category</h3>
+          <h4>Category</h4>
           <?php
           $categories = get_the_category();
           $separator = ' ';
@@ -45,7 +45,7 @@
           echo '</div>';
           }
           ?>
-          <h3>Tags</h3>
+          <h4>Tags</h4>
           <?php the_tags('<div class="tags">', ' ', '</div>'); ?> 
           
         </div>

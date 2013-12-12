@@ -17,7 +17,7 @@
       <?php } ?>
     </div>
     <div class="col spantwo maincol">
-      <h1 class="pagetitle"><span>BMPs by Category</span></h1>
+      <h1 class="pagetitle"><span>BMPs by Tag</span></h1>
       <?php if (is_user_logged_in()) { ?>
         <?php if ( have_posts() ) : ?>
           <div class="contentarea">

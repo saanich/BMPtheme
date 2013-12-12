@@ -272,7 +272,7 @@ function remove_menus () {
         remove_menu_page( 'wpcf7' );                      //Contactform 7
         remove_menu_page( 'edit.php' );                   //Posts
         remove_menu_page( 'upload.php' );                 //Media
-        //remove_menu_page( 'edit.php?post_type=page' );    //Pages
+    //  remove_menu_page( 'edit.php?post_type=page' );    //Pages
         remove_menu_page( 'edit-comments.php' );          //Comments
         remove_menu_page( 'themes.php' );                 //Appearance
         remove_menu_page( 'plugins.php' );                //Plugins
@@ -391,8 +391,8 @@ add_action( 'wp_dashboard_setup', 'bmp_add_dashboard_widgets' );
 function bmp_dashboard_widget_function() {
     echo "
     <h1>Adding a BMP</h1>
-    <p>To add a BMP, hover over, or click on the BMP menu to the left.</p>
-    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/post-new.php?post_type=qa_faqs'>Add New</a>. In the Add BMP screen, you will be asked to enter a <strong>title</strong>, a <strong>short description</strong>, a  <strong>PDF file</strong> and <strong>select a category</strong>.</p>
+    <p>To add a BMP, hover over, or click on the BMPs menu to the left.</p>
+    <p>In the submenu that shows up is a menu item called <strong>New BMP</strong>. In the Add BMP screen, you will be asked to enter a <strong>Title</strong>, a <strong>short description</strong>, a  <strong>PDF file</strong>, <strong>select a category</strong> and add <strong>Tags or Keywords</strong>.</p>
     
     <h2>The title</h2>
     <p>The title is the title of the PDF document you are adding. This title will also be displayed on the page beneath the BMP category.</p>
@@ -420,7 +420,7 @@ function bmp_dashboard_widget_function() {
 
     Salix Applied Earthcare Erosion Draw 5.0
     </pre>
-    <p>Select each of the paragraphs, one at a time and convert them into headers. Select your first header and use the <em>format</em> dropdown from the top left of the short description input box, and chose <strong>heading 4</strong>. Do this to the rest of the headers.</p>
+    <p>Select each of the paragraphs, one at a time and convert them into headers. Select your first header and use the <em>format</em> dropdown from the top left of the short description input box, and chose <strong>heading 4</strong>. Do this, one at a time, to the rest of the headers.</p>
     
     <h2>Add the PDF file</h2>
     <p>Create a new paragraph at the bottom of the description. Ensure the cursor is flashing at the new paragraph at the bottom of the text.</p>
@@ -428,9 +428,14 @@ function bmp_dashboard_widget_function() {
     <p>Once the file is uploaded you will be given the chance to give the file a title. Be sure to give it a readable title (remove the _ and other symbols found in the original file name). Adding a file description, and title can be found on the right hand side of the file uplod screen.</p>
     <p>Add in a caption and a description for the file. I usually copy and paste from the title. The Attachment display settings allow you to chose where it will link to: <strong>Media file</strong> or <strong>post page</strong>. In the BMP site, we are going to link it to the Media File, so our engineers can download it directly</p>
     <p>The text and icon for the PDF is appended to the name automatically, when viewed on the front end of the site.</p>
+
     <h2>Select the category</h2>
     <p>On the right hand side of the screen, you will find a list of all the categories. Select the category the BMP belongs to by checking the box next to it.</p> 
     <p>If additional categories are needed, you can create a new one by selecting <strong>Add New BMP Category</strong>.</p>
+
+    <h2>Add tags</h2>
+    <p>On the right hand side of the screen, you can add tags.</p> 
+    <p>Drop the list of tags into the add box, each tag separated by a comma. <strong>Be sure to check if a similar tag already exists by selecting <em>Choose from the most used tags</em>.</strong> This will make sure that all BMPs that have associated tag are listed together in the tag view, under a specific tag.</p>
     ";
 } 
 
@@ -448,7 +453,7 @@ function bmpedit_dashboard_widget_function() {
 
     <h1>Editing a BMP</h1>
     <p>To edit a BMP, hover over, or click on the BMP menu to the left.</p>
-    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/edit.php?post_type=qa_faqs'>BMPS</a>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
+    <p>In the submenu that shows up is a menu item called <strong>BMPS</strong>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
     <p>Click on the file you wish to edit, and use the guidelines for adding a BMP to edit the BMP, or add a new file.</p>
     ";
 } 
@@ -465,7 +470,7 @@ function bmpdelete_dashboard_widget_function() {
     echo "
     <h1>Deleting a BMP</h1>
     <p>To erase a BMP, hover over, or click on the BMP menu to the left.</p>
-    <p>In the submenu that shows up is a menu item called <a href='///bmp.saanich.ca/wp-admin/edit.php?post_type=qa_faqs'>BMPS</a>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
+    <p>In the submenu that shows up is a menu item called <strong>BMPS</strong>. In the BMP screen, you will see all the BMPs listed on the site in chronological order, newest at the top.</p>
     <p>When you hover over a file name, a <span class='trash'><a href='#'>red link that says Trash</a></span> is shown, click on the link to delete the BMP.</p>
     <p>A yellow box will confirm that you have trashed the file, and will give you a chance to undo. Trashed files are found in the trash section of the BMPS and you will need to empty the trash if you wish to use the same file name.</p>
     ";

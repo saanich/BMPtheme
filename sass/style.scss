@@ -48,6 +48,7 @@ $teenwidth: 90%;	//tablets portrait all the way down to the smallest phones.
 @import "jquery.fancybox-1.3.4";
 @import "nav";
 @import "layout";
+@import "print";
 @import "oldie";
 
 
@@ -301,7 +302,8 @@ h1.pagetitle,h2,h3{
 	display:block;
 	text-decoration:none;
 	}
-.subcol ul li a:hover{
+.subcol ul li a:hover,
+.subcol ul li.current-menu-item a{
 	background:lighten( $lightcolor, 10% );
 	}
 .contentarea .faq-catname{
@@ -369,7 +371,7 @@ a[href $='.pdf']:hover:after {
 		text-decoration: none;
 		overflow: hidden;
 		background:rgba( 230, 240, 235, 1);
-		width: 100%;
+		width: 99.3%;
 		&:hover{
 			background: $body_link_color;
 			color:black;
@@ -391,7 +393,7 @@ a[href $='.pdf']:hover:after {
 		text-decoration: none;
 		overflow: hidden;
 		background:rgba(235, 230, 240, 1);
-		width: 100%;
+		width: 99.3%;
 		&:hover{
 			background: $nav_hover_bg;
 		color:black;
