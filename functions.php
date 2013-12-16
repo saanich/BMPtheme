@@ -54,16 +54,18 @@ register_sidebar(array(
  'after_title' => '</h3>',
  ));
 
-
 register_sidebar(array(
- 'name' => __( 'The search bar for the BMPS' ),
- 'id' => 'bmpsearch',
- 'description' => __( 'This is found on the category and tag listing pages for BMPs' ),
+ 'name' => __( 'Right hand side - logged in' ),
+ 'id' => 'insidepageright2',
+ 'description' => __( 'This will be displayed under the logo only if you are logged in.' ),
  'before_widget' => '<div>',
  'after_widget' => '</div>',
  'before_title' => '<h3>',
  'after_title' => '</h3>',
  ));
+
+
+
 
 
 // =======================================================
@@ -262,6 +264,7 @@ function kriesi_pagination($pages = '', $range = 2)
 }
 
 
+
 // =======================================================
 // Removes posts and pages from menu options in dashboard for those that aren't administrator.
 // ======================================================= 
@@ -298,8 +301,8 @@ function admin_bar_edit() {
         $wp_admin_bar->remove_menu('my-account-with-avatar'); 
         $wp_admin_bar->remove_menu('edit-profile');
         $wp_admin_bar->remove_menu('search');
-        $wp_admin_bar->remove_menu('edit');
-        $wp_admin_bar->remove_menu('new-content');
+        //$wp_admin_bar->remove_menu('edit');
+        //$wp_admin_bar->remove_menu('new-content');
         $wp_admin_bar->remove_menu('new-post'); 
         $wp_admin_bar->remove_menu('new-page'); 
         $wp_admin_bar->remove_menu('new-media');
@@ -572,4 +575,14 @@ function change_post_object_label() {
     $labels->not_found = 'No BMPs found';
     $labels->not_found_in_trash = 'No BMPs found in Trash';
 }*/
+
+/*
+Plugin Name: WLW Disabler
+*/
+
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'index_rel_link');
+remove_action('wp_head', 'wp_generator');
+
 ?>

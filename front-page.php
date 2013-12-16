@@ -16,6 +16,7 @@
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('frontpage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>

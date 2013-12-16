@@ -4,26 +4,24 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
 <head>
-	<!-- Basic Page Needs
+  <!-- Basic Page Needs
   ================================================== -->
-	<meta charset="utf-8">
-	<title><?php wp_title(''); ?><?php if(wp_title(' ', false)) { echo ' - '; } ?><?php bloginfo('name'); ?></title>
+  <meta charset="utf-8">
+  <title><?php wp_title(''); ?><?php if(wp_title(' ', false)) { echo ' - '; } ?><?php bloginfo('name'); ?></title>
   <meta name="description" content="Saanich Best Practicve Management documents"/>
-	<meta name="author" content="Designed by Saanich IT Department, Joel Friesen">
-  <meta name="robots" content="index, nofollow" />
-	<meta name="googlebot" content="index, nofollow" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	
+  <meta name="author" content="Designed by Saanich IT Department, Joel Friesen">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
   <!-- Mobile Specific Metas
   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
-	<!-- CSS
+  <!-- CSS
   ================================================== -->
   <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
   <link href='///fonts.googleapis.com/css?family=Muli:300' rel='stylesheet' type='text/css'>
 
-	<!-- Favicons
+  <!-- Favicons
   ================================================== -->
   <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.png">
   <link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-57x57.png" />
@@ -48,17 +46,13 @@
   <meta name="msapplication-square310x310logo" content="<?php bloginfo('template_directory'); ?>/images/mstile-310x310.png" />
 
   <!-- JQuery, analytics and WP scripts
-	================================================== -->   
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  ================================================== -->   
+  <script type="text/javascript" src="///ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/menu.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/responsiveslides.min.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/analytics.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      $(".wp-caption a[href*='/wp-content/uploads/'],.gallery-icon a[href*='/wp-content/uploads/'],.attachment a[href*='/wp-content/uploads/'],.ngg-gallery-thumbnail a[href*='/wp-content/gallery/']").fancybox({'titlePosition' : 'inside'});
-		});
-  </script> 
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancysettings.js"></script>
+
   <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
   <?php wp_head(); ?>
 </head>

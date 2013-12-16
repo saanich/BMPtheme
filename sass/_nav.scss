@@ -17,7 +17,6 @@
       li a{ 
         background:$nav_bg;
         text-align:center; 
-        line-height: 2em; 
         float:left; 
         color:$nav_color; 
         padding:0px; 
@@ -247,7 +246,7 @@
   #main-nav-check:checked ~ .mobile-nav ul.menu ul.subhide ul.subshow li a.navdropover {
     border-width:0;
     line-height:0;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
   #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdrop,
   #main-nav-check:checked ~ .mobile-nav ul.menu li a.navdropover,
@@ -255,13 +254,13 @@
   #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a.navdropover{
     border-width:1.25em 0 0 0;
     line-height: 1.75em;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     border-bottom:1px solid transparent;
   }
   #main-nav-check:checked ~ .mobile-nav ul.menu li a,
   #main-nav-check:checked ~ .mobile-nav ul.menu ul.subshow li a {
     line-height: 3em;
     border-width:0 0 1px 0;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 }

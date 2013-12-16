@@ -19,15 +19,50 @@
     <div class="col spantwo maincol">
     	<h1 class="pagetitle"><span>BMPs by Category</span></h1>
 
+      <?php 
+      // if ( is_category() ) {
+      // $this_category = get_category($cat);
+      // if($this_category->category_parent):
+      //   echo "is child";
+      // endif;
+      // if($this_category->category_child):
+      //   echo "is parent";
+      // endif;
+      //else:
+      //   $this_category = wp_list_categories('orderby=id&depth=5&show_count=0&title_li=&use_desc_for_title=1&child_of='.$this_category->cat_ID."&echo=0");
+      //echo '<ul>'. $this_category . '</ul>';
+      //endif;
+      // } 
+      ?>
+
       <?php if (is_user_logged_in()) { ?>
         <?php if ( have_posts() ) : ?>
           <div class="contentarea">
             <h2><?php single_tag_title(); ?></h2>
             <?php while ( have_posts() ) : the_post(); ?>
-              <div class="categories">
+              <div class="bmplist">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </div>
             <?php endwhile; ?>
+            
+            <?php 
+            //if (is_category()) {
+            //  $this_category = get_category($cat);
+            //  if (get_category_children($this_category->cat_ID) != "") {
+            //    echo "<h2>Related Categories</h2>";
+            //    echo "<div class='bmplist'>";
+            //    wp_list_categories('orderby=id&show_count=0&style=&title_li=&use_desc_for_title=1&child_of='.$this_category->cat_ID);
+            //    echo "</div>";
+            //  }
+            //  if (get_category_parents($this_category->cat_ID) != "") {
+            //    echo "<h2>Related Categories</h2>";
+            //    echo "<div class='bmplist'>";
+            //    echo get_category_parents( $cat, true, ' ' );
+            //    echo "</div>";
+            //  }
+            //}
+            ?>
+
           </div>
         <?php endif; ?> 
         <?php if ( $wp_query->max_num_pages > 1 ) : ?> 
@@ -44,6 +79,7 @@
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('insidepage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>

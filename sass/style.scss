@@ -11,6 +11,7 @@ $contentbgcolor: rgba(#fff, 0.9);
 $darkcolor:#266fa0;
 $lightcolor:#4c9cd2;
 $splashcolor:darken( #efb211, 10% );
+$splashcolorbright:#ffb900;
 $body_link_color:#4c9cd2;
 $body_link_hover_color:$body_link_color*1.7;
 $googlefont1:'Muli', sans-serif;
@@ -68,7 +69,7 @@ body {
 	}
 	height: 100%;
 	margin: 0;
-	font: 1em/2em Verdana,Arial,Helvetica,sans-serif;
+	font: 1em/1.6em Verdana,Arial,Helvetica,sans-serif;
 	}
 .topbar {
 	background:$lightcolor; 
@@ -186,9 +187,12 @@ form.searchbmps{
 
 
 .logo{
-	margin: 0 0 50px 0;
+	margin: 0 0 2em 0;
 	padding: 0;
 	text-align: center;
+		@media only screen and (min-width:0) and (max-width: $teenbreak) {
+		display:none;
+		}
 	}
 .logo a {
 	height: 146px;
@@ -200,9 +204,7 @@ form.searchbmps{
 	display: block;
 	background: url(images/logo.png) center no-repeat;
 	background-size: 100%;
-	@media only screen and (min-width:0) and (max-width: $teenbreak) {
-		display:none;
-		}
+
 	}
 .logo a span {
 	display: none;
@@ -299,6 +301,9 @@ h1.pagetitle,h2,h3{
 .subcol ul li a{
 	color:#fff;
 	padding: 0.4em 1.2em;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		padding:1em 1.2em;
+	}
 	display:block;
 	text-decoration:none;
 	}
@@ -321,18 +326,9 @@ h1.pagetitle,h2,h3{
 	text-decoration:none;
 	}
 
-a[href $='.pdf']:after {
-    margin-left: 0.2em;
-    font-size: 0.9em;
-	color: $splashcolor;
-    content: "- \f15c    PDF";
-    font-family: 'FontAwesome';
-    }
-a[href $='.pdf']:hover:after {
-   	color: #000;
-    }
+
 .subcol ul li.loggedin a,
-.subcol ul li.loggedout a		{color:#ffb900;}
+.subcol ul li.loggedout a		{color: $splashcolorbright;}
 .subcol ul li.loggedout a:hover,
 .subcol ul li.loggedin a:hover 	{color:#000;}
 
@@ -355,72 +351,54 @@ a[href $='.pdf']:hover:after {
 }
 
 
+.categories,
+.bmplist,
+.tags {overflow:hidden;}
 
+.categories a,
+.bmplist a,
+.tags a 
+	{
+	border:1px solid #dfdfdf;
+	margin:.5em 0;
+	padding:.4em 0;
+	display: block;
+	vertical-align: top;
+	text-align:center;
+	text-decoration: none;
+	overflow: hidden;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		padding:1em 0;
+	}
+	&:hover{
+		background: $nav_hover_bg;
+		color:black;
+	}
+}
 
-.categories{
-	overflow:hidden;
+.categories{	
 	a{
-		border:1px solid #dfdfdf;
-		margin:.5em 0;
-		padding:.2em 0;
-		display: block;
-		vertical-align: top;
-		float:left;
-		text-align:center;
-		line-height: 35px;
-		text-decoration: none;
-		overflow: hidden;
 		background:rgba( 230, 240, 235, 1);
 		width: 99.3%;
-		&:hover{
-			background: $body_link_color;
-			color:black;
-		}
 	}
 }
 
 .bmplist{
-	overflow:hidden;
-	a{
-		border:1px solid #dfdfdf;
-		margin:.5em 0;
-		padding:.2em 0;
-		display: block;
-		vertical-align: top;
-		float:left;
-		text-align:center;
-		line-height: 35px;
-		text-decoration: none;
-		overflow: hidden;
+	a{	
 		background:rgba(235, 230, 240, 1);
 		width: 99.3%;
-		&:hover{
-			background: $nav_hover_bg;
-		color:black;
-		}
 	}
 }
 
-
 .tags{
-	overflow:hidden;
 	text-align: justify;
-	
 	a{
-		border:1px solid #dfdfdf;
-		margin:.5em 0;
-		padding:.2em .4em;
-		vertical-align: top;
-		text-align:center;
-		display: inline-block;
-		line-height: 3em;
-		text-decoration: none;
-		overflow: hidden;
-		background:rgba(240, 235, 230, 1);
-		&:hover{
-			background: $body_link_color;
-			color:black;
+		padding:.4em;
+		@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+			padding:1em .4em;
 		}
+		display: inline-block;
+		background:rgba(240, 235, 230, 1);
 	}
 }
 

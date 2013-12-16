@@ -22,13 +22,16 @@
         <?php if ( have_posts() ) : ?>
           <div class="contentarea">
           	<h2><?php single_tag_title(); ?></h2>
+
       			<?php while ( have_posts() ) : the_post(); ?>
-              <div class="categories">
+              <div class="bmplist">
       				  <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </div>
       			<?php endwhile; ?>
           </div>
         <?php endif; ?> 
+
+
         <?php if ( $wp_query->max_num_pages > 1 ) : ?> 
           <div class="pagination"> 
             <?php kriesi_pagination(); ?> 
@@ -43,6 +46,7 @@
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('insidepage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>

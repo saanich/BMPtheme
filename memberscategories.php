@@ -24,7 +24,21 @@ Template Name: Members only categories list.
       <?php if (is_user_logged_in()) { ?>
         <h1 class="pagetitle"><span><?php the_title(); ?></span></h1>
         <div class="contentarea">
-        
+      
+        <!-- ?php  An attempt to limit categories per page - worked at limiting it, but pagionation did not work, and blank categories showed up.
+        $posts_per_page = 10;
+        $page = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+        $offset = ( $page - 1 );
+        $categories = get_categories();
+        for( $i = $offset * $posts_per_page; $i < ( $offset + 1 ) * $posts_per_page; $i++ ) {
+            $category = $categories[$i];
+            echo '<div class="categories">';
+            echo '<a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> ';
+            echo '</div>';
+         } 
+         unset( $category );
+        ? -->
+
         <?php
         $categories = get_categories();
           foreach($categories as $category) { 
@@ -51,6 +65,7 @@ Template Name: Members only categories list.
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('insidepage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>

@@ -22,9 +22,10 @@
         <?php if ( have_posts() ) : ?>
           <h1 class="pagetitle"><span>All BMPs</span></h1>
           <div class="contentarea">
-           <?php while (have_posts()) : the_post(); ?>
+          <?php $posts = query_posts($query_string . '&orderby=title&order=asc');  ?>
+          <?php while (have_posts()) : the_post(); ?>
              <div class="bmplist">
-                <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+               <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
               </div>
             <?php endwhile; ?>
           </div>
@@ -43,6 +44,7 @@
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('insidepage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>

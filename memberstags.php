@@ -26,7 +26,7 @@ Template Name: Members only tags list.
         <div class="contentarea">
           <div class="tags">
           <?php
-          $tags = get_tags($args);
+          $tags = get_tags();
             foreach($tags as $tag) { 
               echo '<a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a>  ';
            } 
@@ -49,6 +49,7 @@ Template Name: Members only tags list.
     </div>
     <div class="col subcol">
       <?php dynamic_sidebar('insidepage') ?>
+      <?php if (is_user_logged_in()) { dynamic_sidebar('insidepageright2'); } ?>
     </div>
   </div>
 <?php get_footer(); ?>
