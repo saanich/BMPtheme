@@ -52,7 +52,27 @@
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/analytics.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancysettings.js"></script>
-
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.simpleWeather-2.3.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $.simpleWeather({
+        zipcode: '',
+        woeid: '23405825',
+        location: '',
+        unit: 'c',
+        success: function(weather) {
+          html =  '<p class="temperature"><span class="tempnum">'+weather.temp+'</span><span class="deg">&deg; </span>';
+          html += '<img alt="'+weather.currently+' weather icon" width="32" src="<?php bloginfo('template_directory'); ?>/images/weather/'+weather.code+'.png"></p>';
+          html += '<p class="currently">'+weather.currently+'</p>';
+        
+          $("#weather").html(html);
+        },
+        error: function(error) {
+          $("#weather").html('<p>'+error+'</p>');
+        }
+        });
+      });
+  </script>
   <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
   <?php wp_head(); ?>
 </head>
@@ -63,7 +83,9 @@
   <nav class="menubar mobile-nav" id="mobile-nav">
     <?php wp_nav_menu(array( 'theme_location' => 'secondary-menu', 'container_class' => 'container' ) );?>
   </nav> 
-  
+  <div class="weatherholder container fourcol">
+    <div id="weather" class="col"></div>
+  </div>
   <div class="topbar container fourcol">
     <div class="col spanthree">
       <h1 class="sitetitle"><a href="<?php bloginfo('url'); ?>" ><?php bloginfo('name'); ?></a></h1>
@@ -72,7 +94,6 @@
       <?php dynamic_sidebar('topbar') ?>
     </div>
   </div>
-
   <div class="navarea container fourcol">
     <div class="col bodybackgroundcolour rowholder">
       &nbsp;
@@ -83,5 +104,4 @@
       </nav>
     </div>
   </div>
-
-  <div class="container headdecor"></div>
+  <div class="container headdecor">&nbsp;</div>

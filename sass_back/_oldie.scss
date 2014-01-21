@@ -1,0 +1,28 @@
+/*
+Old IE Styles 
+*/
+
+.ie{
+	body { 
+		background:#93c1d7
+	}
+	ul.menu li {
+		margin: 0 1em 0 0;
+	}
+
+	form.searchbmps input[type="search"]{
+		width:95%;
+	}
+
+	.topserach form input[type="submit"]{
+		font-size: 0px;
+	}
+	.navarea {
+	    ul.menu {margin:0;
+	      	li {
+		      	margin:0 $margin_width 0 0; 
+		      	width:$menuitem_width;
+	    	}
+	    }
+	}
+}

@@ -57,7 +57,6 @@ $fullcontainer_width:$papawidth;
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width; }
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
-    .container .rowholder .col:first-child           { margin:0 !important;}
     .main                           { width: $fullcontainer_width - ($margin_width /2);}
 
 $onecol_width:($fullcontainer_width)-($margin_width*2);
@@ -85,13 +84,24 @@ $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);
         .fivecol .spanthree                       {width: $fivecol_width * 3 + ($margin_width * 2);}
         .fivecol .spanfour                        {width: $fivecol_width * 4 + ($margin_width * 3);}
         .fivecol .spanfive                        {width: $fivecol_width * 5 + ($margin_width * 4);}
+        .fivecol .spantwo.rowholder               {width: $fivecol_width * 2 + ($margin_width * 2);}
+        .fivecol .spanthree.rowholder             {width: $fivecol_width * 3 + ($margin_width * 3);}
+        .fivecol .spanfour.rowholder              {width: $fivecol_width * 4 + ($margin_width * 4);}
+        .fivecol .spanfive.rowholder              {width: $fivecol_width * 5 + ($margin_width * 5);}
           
     .sixcol .col                                  {width: $sixcol_width;}
         .sixcol .spantwo                          {width: $sixcol_width * 2 + $margin_width;}
         .sixcol .spanthree                        {width: $sixcol_width * 3 + ($margin_width * 2);}
         .sixcol .spanfour                         {width: $sixcol_width * 4 + ($margin_width * 3);}
         .sixcol .spanfive                         {width: $sixcol_width * 5 + ($margin_width * 4);}
-        .sixcol .spansix                          {width: $sixcol_width * 6 + ($margin_width * 5);}    
+        .sixcol .spansix                          {width: $sixcol_width * 6 + ($margin_width * 5);}
+
+        .sixcol .spantwo.rowholder                {width: $sixcol_width * 2 + ($margin_width * 2);}
+        .sixcol .spanthree.rowholder              {width: $sixcol_width * 3 + ($margin_width * 3);}
+        .sixcol .spanfour.rowholder               {width: $sixcol_width * 4 + ($margin_width * 4);}
+        .sixcol .spanfive.rowholder               {width: $sixcol_width * 5 + ($margin_width * 5);}
+        .sixcol .spansix.rowholder                {width: $sixcol_width * 6 + ($margin_width * 6);}
+    
 /* Incedentals
 ================================================== */
 $menuitem_width:
@@ -131,7 +141,6 @@ $menuitem_width:
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
-    .container .rowholder .col:first-child           { margin:0 !important;}
     /*just for this particular design. 
     The main ares needs to be smaller than the header*/
     .main                           { width: $fullcontainer_width - ($margin_width /2);}
@@ -161,6 +170,9 @@ $menuitem_width:
         .fivecol .spanthree                       {width: $fivecol_width * 3 + ($margin_width * 2);}
         .fivecol .spanfour                        {width: $fivecol_width * 4 + ($margin_width * 3);}
         .fivecol .spanfive                        {width: $fivecol_width * 5 + ($margin_width * 4);}
+        .fivecol .spantwo.rowholder               {width: $fivecol_width * 2 + ($margin_width * 2);}
+        .fivecol .spanthree.rowholder             {width: $fivecol_width * 3 + ($margin_width * 3);}
+        .fivecol .spanfour.rowholder              {width: $fivecol_width * 4 + ($margin_width * 4);}
           
     .sixcol .col                                  {width: $sixcol_width;}
         .sixcol .spantwo                          {width: $sixcol_width * 2 + $margin_width;}
@@ -169,6 +181,11 @@ $menuitem_width:
         .sixcol .spanfive                         {width: $sixcol_width * 5 + ($margin_width * 4);}
         .sixcol .spansix                          {width: $sixcol_width * 6 + ($margin_width * 5);}
 
+        .sixcol .spantwo.rowholder                {width: $sixcol_width * 2 + ($margin_width * 2);}
+        .sixcol .spanthree.rowholder              {width: $sixcol_width * 3 + ($margin_width * 3);}
+        .sixcol .spanfour.rowholder               {width: $sixcol_width * 4 + ($margin_width * 4);}
+        .sixcol .spanfive.rowholder               {width: $sixcol_width * 5 + ($margin_width * 5);}
+        .sixcol .spansix.rowholder                {width: $sixcol_width * 6 + ($margin_width * 6);}
     
 $menuitem_width:
 
@@ -205,12 +222,10 @@ _________ _______  _______  _
     $margin_width:5%;
     
     $onecol_width:$fullcontainer_width;
-    .container                      { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden; }
+    .container                     { width: $fullcontainer_width; margin: 0 auto; padding: 0; overflow: hidden; }
     .container .col                 { float: left; margin: 0 0 $margin_width $margin_width;}
     .container .nomargin            { margin:0;}
     .container .rowholder           { margin:0;}
-    .container .rowholder .col,
-    .container .rowholder           { margin:0 !important; width:100% !important;}
 
       .onecol .col                                ,
     .twocol .col                                  ,

@@ -26,12 +26,14 @@ form .selectinput{
   background:#dedee5 * 2;
   margin:1% 0;
   padding:1%;
-  width:96.8%;
+  width:97.3%;
   display: block;
   vertical-align: top;
   float:right;
 }
 form label{
+  float:left;
+  width:19%;
   display:block;
   vertical-align: top;
   text-align:left;
@@ -127,4 +129,3 @@ a[href $='.pdf']:after {
 a[href $='.pdf']:hover:after {
     color: #000;
     }
-
