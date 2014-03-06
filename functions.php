@@ -73,10 +73,12 @@ register_sidebar(array(
 // ======================================================= 
 function my_login_logo() { ?>
     <style type="text/css">
+        body.login {background:#fff;}
         body.login div#login h1 a {
             background-image: url(<?php echo get_bloginfo( 'template_directory' ) ?>/images/logo.png);
             padding-bottom: 30px;
             height: 140px;
+            width:230px;
             background-size: auto;
         }
     </style>

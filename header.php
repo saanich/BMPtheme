@@ -19,6 +19,7 @@
   <!-- CSS
   ================================================== -->
   <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href='///fonts.googleapis.com/css?family=Muli:300' rel='stylesheet' type='text/css'>
 
   <!-- Favicons
