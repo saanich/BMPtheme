@@ -31,6 +31,20 @@ form .selectinput{
   vertical-align: top;
   float:right;
 }
+.spanthree{
+	form textarea, 
+	form .fileupload,
+	form .textinput,
+	form input[type="text"],
+	form input[type="password"],
+	form input[type="email"],
+	form input[type="search"],
+	form input[type="tel"],
+	form select,
+	form .selectinput{
+		width:97.6%;
+	}
+}
 form label{
   display:block;
   vertical-align: top;
@@ -69,6 +83,7 @@ form .formhint{
 }
 
 /* FANCY PANTS BUTTONS */
+button,
 form input[type="submit"],
 a.more-link,
 .main a[href $='.pdf'],

@@ -11,18 +11,7 @@
   <meta name="description" content="Saanich Best Practicve Management documents"/>
   <meta name="author" content="Designed by Saanich IT Department, Joel Friesen">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <!-- Mobile Specific Metas
-  ================================================== -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-
-  <!-- CSS
-  ================================================== -->
-  <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link href='///fonts.googleapis.com/css?family=Muli:300' rel='stylesheet' type='text/css'>
-
-  <!-- Favicons
+	<!-- Favicons
   ================================================== -->
   <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.png">
   <link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-57x57.png" />
@@ -45,35 +34,31 @@
   <meta name="msapplication-square150x150logo" content="<?php bloginfo('template_directory'); ?>/images/mstile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="<?php bloginfo('template_directory'); ?>/images/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="<?php bloginfo('template_directory'); ?>/images/mstile-310x310.png" />
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
+  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/js/fancybox/jquery.fancybox-1.3.4.css" />
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli:300" />
 
-  <!-- JQuery, analytics and WP scripts
+	<!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+  
+  <!-- JQuery, analytics and scripts
   ================================================== -->   
-  <script type="text/javascript" src="///ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/menu.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/analytics.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancysettings.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.simpleWeather-2.3.min.js"></script>
-  <script type="text/javascript">
-      $(document).ready(function() {
-        $.simpleWeather({
-        zipcode: '',
-        woeid: '23405825',
-        location: '',
-        unit: 'c',
-        success: function(weather) {
-          html =  '<p class="temperature"><span class="tempnum">'+weather.temp+'</span><span class="deg">&deg; </span>';
-          html += '<img alt="'+weather.currently+' weather icon" width="32" src="<?php bloginfo('template_directory'); ?>/images/weather/'+weather.code+'.png"></p>';
-          html += '<p class="currently">'+weather.currently+'</p>';
-        
-          $("#weather").html(html);
-        },
-        error: function(error) {
-          $("#weather").html('<p>'+error+'</p>');
-        }
-        });
-      });
-  </script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/menu.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.simpleWeather-2.3.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancybox/jquery.easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/fancysettings.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/weathersettings.js"></script>
+  <!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
   <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
   <?php wp_head(); ?>
 </head>
