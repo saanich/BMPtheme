@@ -6,7 +6,10 @@
         box-shadow:none !important;
         text-shadow: none !important;
     }
-
+	.container .col{
+		width: 100% !important;
+		margin: 0 !important;
+		}
     a,
     a:visited {
         text-decoration: underline;
@@ -61,12 +64,16 @@
     h3 {
         page-break-after: avoid;
     }
-     .main {width:90%}
+     .main,
+     .container {width:90%,margin: 0 !important;}
      .subcol, 
      .navarea, 
      .topserach,
      .toggle-menu, 
      .mobile-nav,
+     .weatherholder,
+     #weather,
+     .temperature,
      #wpadminbar {display:none}
      .maincol {width:100% !important; margin:0 !important}
 }
