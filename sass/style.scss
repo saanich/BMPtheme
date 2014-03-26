@@ -2,7 +2,7 @@
 Theme Name: Saanich Theme
 Theme URI: https://saanich.ca/
 Description: District of Saanich
-Version: 1.5
+Version: 1.6
 Author: Joel Friesen 
 Author URI: http://saanich.ca/
 */
@@ -38,8 +38,6 @@ $mamawidth: 800px;
 $teenbreak: 820px;
 $teenwidth: 90%;
 
-
-
 @import "base";
 @import "common";
 @import "wordpress";
@@ -54,10 +52,8 @@ $teenwidth: 90%;
 @import "print";
 @import "oldie";
 
-
-
 body {
-background: lighten(rgba(73, 151, 187, 1), 20%);
+	background: lighten(rgba(73, 151, 187, 1), 20%);
 	background: url(images/background.png) top, -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 1%, lighten(rgba(73, 151, 187, 1), 20%) 33%);
 	/* Chrome10+,Safari5.1+ */
 	background: url(images/background.png) top, -moz-linear-gradient(top, rgba(255, 255, 255, 1) 1%, lighten(rgba(73, 151, 187, 1), 20%) 33%);
@@ -74,142 +70,140 @@ background: lighten(rgba(73, 151, 187, 1), 20%);
 	height: 100%;
 	margin: 0;
 	font: .9em/1.5em Verdana,Arial,Helvetica,sans-serif;
-	@media only screen and (max-width: $teenbreak) {	
-		background:lighten( rgba(73,151,187,1), 20% ) ;
+	@media only screen and (max-width: $teenbreak) {
+		background: lighten(rgba(73, 151, 187, 1), 20%);
 		font: 1em/1.5em Verdana,Arial,Helvetica,sans-serif;
-	}	
+	}
 }
 
 .topbar {
-	background:$lightcolor; 
+	background: $lightcolor;
 	padding: 20px 0;
 }
 
 .topbar .col,
 .navarea .col {
-	margin-bottom:0;
+	margin-bottom: 0;
 }
 
 .navarea {
-	background:$lightcolor;
+	background: $lightcolor;
 }
 
 .container .rowholder.bodybackgroundcolour {
-	background:#fff; 
+	background: #fff;
 	margin: 0 0 0 0.54em;
 	width: 18.2em;
-	padding:0.5em 0;
+	padding: 0.5em 0;
 	@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
-		width:15em;
+		width: 15em;
 		margin: 0 0 0 0.425em;
 	}
 }
 
 .main {
-	background:#fff;
+	background: #fff;
 	top: -30px;
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
 		top: 0px;
 	}
-	position: relative; 
+	position: relative;
 }
 
-.headdecor{
-	background:$lightcolor; 
+.headdecor {
+	background: $lightcolor;
 	height: 30px;
 	position: relative;
 	left: 50%;
-	margin-left: -$papawidth/2;
+	margin-left: -$papawidth / 2;
 	@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
-		margin-left: -$mamawidth/2;
+		margin-left: -$mamawidth / 2;
 	}
-
-	@media only screen and (min-width:0) and (max-width: $teenbreak) {
-		display:none;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		display: none;
 	}
 }
 
-.topserach form{
-	float:right;
-	width:94.6%;
-	@media only screen and (min-width:0) and (max-width: $teenbreak) {
-		width:100%;
+.topserach form {
+	float: right;
+	width: 94.6%;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		width: 100%;
 	}
-	input[type="submit"]{
+	input[type="submit"] {
 		border: none;
 		width: 30px;
 		height: 28px;
 		background: url(images/icons.png) 103px 99px;
 		color: transparent;
-		padding:0;
-		margin:0;
-		float:right; 
+		padding: 0;
+		margin: 0;
+		float: right;
 	}
-	input[type="search"]{
-		width:78%;
-		float:left;
-		margin:0;
+	input[type="search"] {
+		width: 78%;
+		float: left;
+		margin: 0;
 		padding: .2em;
 		@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
-			width:74%;
+			width: 74%;
 		}
-		@media only screen and (min-width:0) and (max-width: $teenbreak) {
-			margin:0;
-			width:85%;
+		@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+			margin: 0;
+			width: 85%;
 		}
 	}
 	input[type="search"] {
 		-webkit-appearance: none;
 	}
-	input[type="search"]::-webkit-search-decoration, 
+	input[type="search"]::-webkit-search-decoration,
 	input[type="search"]::-webkit-search-cancel-button {
 		display: none;
 	}
-	label{
-		display:none;
+	label {
+		display: none;
 	}
 }
 
-form.searchbmps{
+form.searchbmps {
 	.subcol & {
-		margin:25px 0 0 0;
+		margin: 25px 0 0 0;
 	}
-	@media only screen and (min-width:0) and (max-width: $teenbreak) {
-		display:none;
-		}
-	input[type="search"]{
-		width:100%;
-		float:left;
-		margin:0;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		display: none;
+	}
+	input[type="search"] {
+		width: 100%;
+		float: left;
+		margin: 0;
 		padding: .5em;
 		border: 1px solid #B9C4E0;
 		@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
-			width:100%;
+			width: 100%;
 		}
-		@media only screen and (min-width:0) and (max-width: $teenbreak) {
-			margin:0;
-			width:100%;
+		@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+			margin: 0;
+			width: 100%;
 		}
 	}
 	input[type="search"] {
 		-webkit-appearance: none;
 	}
-	input[type="search"]::-webkit-search-decoration, 
+	input[type="search"]::-webkit-search-decoration,
 	input[type="search"]::-webkit-search-cancel-button {
 		display: none;
 	}
-	label{
-		display:none;
-	}	
+	label {
+		display: none;
+	}
 }
 
-
-.logo{
+.logo {
 	margin: 0 0 1em 0;
 	padding: 0;
 	text-align: center;
-		@media only screen and (min-width:0) and (max-width: $teenbreak) {
-		display:none;
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
+		display: none;
 	}
 }
 
@@ -227,18 +221,18 @@ form.searchbmps{
 	display: none;
 }
 
-h1.sitetitle{
-	font-size:2em;
+h1.sitetitle {
+	font-size: 2em;
 	margin: 0;
-	color:#fff;
+	color: #fff;
 	@media only screen and (min-width: $teenbreak) and (max-width: $mamabreak) {
-		font-size:1.4em;
-		}
-	@media only screen and (min-width:0) and (max-width: $teenbreak) {
+		font-size: 1.4em;
+	}
+	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
 		padding: 0 0 0.5em 0;
 	}
 	a {
-		color:#fff;
+		color: #fff;
 		text-decoration: none;
 	}
 }
@@ -280,101 +274,105 @@ h2.sitetitle {
 
 .contentarea h1.pagetitle,
 .contentarea h2,
-.contentarea h3,
-.contentarea h4{
-	background:none;
-	color:$darkcolor;
-	font-family:$googlefont1;
-	font-size:1.4em;
+.contentarea h3, 
+.textwidget h3,
+.contentarea h4,
+.textwidget h4{
+	background: none;
+	color: $darkcolor;
+	font-family: $googlefont1;
+	font-size: 1.4em;
 	padding: 0.2em 0em;
 	margin: 2.20em 0 1em 0;
 	border: 1px solid #1c5378;
-	border-width:0 0 3px 0;
+	border-width: 0 0 3px 0;
 	clear:both;
 	a {
-	color:$darkcolor;
-	text-decoration: none;
+		color: $darkcolor;
+		text-decoration: none;
 	}
 }
 
 .contentarea h3,
-.contentarea h4{
-	font-size:1.2em;
-	color:$splashcolor;
-	border-width:0;
+.textwidget h3,
+.contentarea h4,
+.textwidget h4 {
+	font-size: 1.2em;
+	color: $splashcolor;
+	border-width: 0;
 	a {
-	color:$splashcolor;
-	text-decoration: none;
-	display: block;
+		color: $splashcolor;
+		text-decoration: none;
+		display: block;
 	}
 }
 
-.contentarea h4{
-	color:$darkcolor;
-	border-width:0;
+.contentarea h4,
+.textwidget h4 {
+	color: $darkcolor;
+	border-width: 0;
 	a {
-	color:$darkcolor;
-	text-decoration: none;
+		color: $darkcolor;
+		text-decoration: none;
 	}
 }
 
 .subcol h1.pagetitle,
-.subcol div.pagetitle{
-	display:none;
+.subcol div.pagetitle {
+	display: none;
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-		display:block;
+		display: block;
 	}
 }
 
 .maincol h1.pagetitle,
-.maincol div.pagetitle{
+.maincol div.pagetitle {
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-		display:none;
+		display: none;
 	}
 }
 
 .contentarea {
-	padding:0 .6em;
+	padding: 0 .6em;
 }
 
-.subcol ul{ 
-	background:$lightcolor;
+.subcol ul {
+	background: $lightcolor;
 	list-style: none;
-	margin:0;
-	padding:0;
-	margin-top:-1.5em;
+	margin: 0;
+	padding: 0;
+	margin-top: -1.5em;
 }
 
-.subcol ul.nobg{ 
-	background:none;
+.subcol ul.nobg {
+	background: none;
 }
 
-.subcol ul.nobg li{
-	border:none;
-	margin:0 0 0 .7em;
+.subcol ul.nobg li {
+	border: none;
+	margin: 0;
 }
 
-
-.subcol ul li a{
-	color:#fff;
+.subcol ul li a {
+	color: #fff;
 	padding: 0.4em .7em;
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-		padding:1em .7em;
+		padding: 1em .7em;
 	}
-	display:block;
-	text-decoration:none;
+	display: block;
+	text-decoration: none;
 	.fa{padding: 5px 10px 3px 0;
 		display: inline;
 		float: left;
 	}
 }
 
-.subcol ul.nobg li a span{
-	color:$body_link_color;
+.subcol ul.nobg li a span {
+	color: $body_link_color;
 }
 
-.subcol ul.nobg li a{
-	color:rgba(75,75,75,1);
+.subcol ul.nobg li a {
+	color: rgba(75, 75, 75, 1);
 	padding: 0;
 }
 
@@ -383,29 +381,31 @@ h2.sitetitle {
 }
 
 .subcol ul li a:hover,
-.subcol ul li.current-menu-item a{
-	background:lighten( $lightcolor, 10% );
+.subcol ul li.current-menu-item a {
+	background: lighten($lightcolor, 10%);
 }
 
 .subcol ul.nobg li a:hover,
-.subcol ul.nobg li.current-menu-item a{
-	background:none;
-	color:$body_link_color;
+.subcol ul.nobg li.current-menu-item a {
+	background: none;
+	color: $body_link_color;
 }
 
-.contentarea .faq-catname{}
+ul.nobullet {list-style:none}
 
-.contentarea .qa-faq-title{
+.contentarea .faq-catname {}
+
+.contentarea .qa-faq-title {
 	padding: 1em 0 0 0;
 	margin: 0.2em 0 .1em 0;
-	border: 1px solid lighten( $lightcolor, 35% );
+	border: 1px solid lighten($lightcolor, 35%);
 	border-width: 0 0 2px 0;
 }
 
 .contentarea .faq-catname a,
-.contentarea .qa-faq-title a{
-	color:inherit;
-	text-decoration:none;
+.contentarea .qa-faq-title a {
+	color: inherit;
+	text-decoration: none;
 }
 
 .subcol ul li.loggedin a,
@@ -418,31 +418,33 @@ h2.sitetitle {
 	color: #000;
 }
 
-#wp-admin-bar-backhome{
+#wp-admin-bar-backhome {
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-		display:none;
+		display: none;
 	}
 }
 
 .hideitem {
-	border-width:0;
-	display:none;
+	border-width: 0;
+	display: none;
 	transition: all 0.3s ease;
 }
 
 .showitem {
-	border-width:0 0 2px 0;
-	display:block;
+	border-width: 0 0 2px 0;
+	display: block;
 	transition: all 0.3s ease;
 }
-.tags{
-  input[type=checkbox],
-  input[type=radiogroup],
-  input[type=radio] {
-   position: absolute;
-   left: -99999px;
-  }
+
+.tags {
+	input[type=checkbox],
+	input[type=radiogroup],
+	input[type=radio] {
+		position: absolute;
+		left: -99999px;
+	}
 }
+
 .categories,
 .bmplist,
 .tags {
@@ -453,24 +455,24 @@ h2.sitetitle {
 .bmplist a,
 .tags a,
 .tags label {
-	border:1px solid #dfdfdf;
-	margin:.5em 0;
-	padding:.4em 0;
+	border: 1px solid #dfdfdf;
+	margin: .5em 0;
+	padding: .4em 0;
 	display: block;
 	vertical-align: top;
-	text-align:center;
+	text-align: center;
 	text-decoration: none;
 	overflow: hidden;
 	@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-		padding:1em 0;
+		padding: 1em 0;
 	}
-	&:hover{
+	&:hover {
 		background: $nav_hover_bg;
-		color:black;
+		color: black;
 	}
 }
 
-.tags{
+.tags {
 	text-align: justify;
 	.emergency {
 		background: rgba(228, 154, 154, 0.25);
@@ -496,15 +498,15 @@ h2.sitetitle {
 			background: rgba(192, 228, 154, 0.5);
 		}
 	}
-	a, label{
-		padding:.4em 1.1em;
+	a, label {
+		padding: .4em 1.1em;
 		@media only screen and (min-width: 0) and (max-width: $mamabreak) {
-			padding:1em .4em;
+			padding: 1em .4em;
 		}
 		display: inline-block;
-		background:rgba(240, 235, 230, 1);
+		background: rgba(240, 235, 230, 1);
 		float: none;
-		width:auto;
+		width: auto;
 	}
 	hr {
 		display: none;
@@ -528,20 +530,21 @@ h2.sitetitle {
 .tags button {
 	display: inline;
 }
-.tags{
-	label.full{
-		width:80%;
+
+.tags {
+	label.full {
+		width: 80%;
 		@media only screen and (min-width: 0) and (max-width: $mamabreak) {
-			width:89%;
+			width: 89%;
 		}
 		@media only screen and (min-width: 0) and (max-width: $teenbreak) {
-			width:auto;
+			width: auto;
 		}
 	}
 	input[type=checkbox]:checked + label,
-	input[type=radio]:checked + label{
+	input[type=radio]:checked + label {
 		background: $nav_hover_bg;
-		color:black;
+		color: black;
 	}
 	input[type=checkbox]:checked + label.emergency,
 	input[type=radio]:checked + label.emergency {
@@ -576,47 +579,45 @@ h2.sitetitle {
 	}
 }
 
-.categories{	
-	a{
-		background:rgba( 230, 240, 235, 1);
+.categories {
+	a {
+		background: rgba(230, 240, 235, 1);
 		width: 99.3%;
 	}
 }
 
-.bmplist{
-	a{	
-		background:rgba(235, 230, 240, 1);
+.bmplist {
+	a {
+		background: rgba(235, 230, 240, 1);
 		width: 99.3%;
 	}
 }
 
-
-
-.pagination{ 
+.pagination {
 	overflow: hidden;
 	text-align: center;
 	padding: 0 1.1em;
 }
 
 .pagination span,
-.pagination a{ 
-	display: inline-block;	
-	background:rgba(240, 240, 240, 1);
+.pagination a {
+	display: inline-block;
+	background: rgba(240, 240, 240, 1);
 	margin: 0 0.4em 0 0;
 	padding: .2em 0.8em;
 	text-decoration: none;
 	color: #666;
-	border:1px solid #dfdfdf;
+	border: 1px solid #dfdfdf;
 }
 
-.pagination a:hover{ 
+.pagination a:hover {
 	color: #000;
-	background: $body_link_color; 
+	background: $body_link_color;
 }
 
-.pagination .current { 
+.pagination .current {
 	background: $body_link_color;
-	color: #fff; 
+	color: #fff;
 }
 
 .video iframe {
@@ -679,4 +680,13 @@ h2.sitetitle {
 
 .thumblist ul li a {
 	padding: 0;
+}
+
+.footer{background:$lightcolor;}
+.foottext {
+	padding:1em;
+	font-size: .8em;
+	text-align:center;
+	color:#FFF;
+
 }
