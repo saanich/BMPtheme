@@ -6,7 +6,7 @@ $(document).ready(function() {
 			unit: 'c',
 			success: function(weather) {
 				html = '<p class="temperature"><span class="tempnum">' + weather.temp + '</span><span class="deg">&deg; </span>';
-				html += '<img alt="' + weather.currently + ' weather icon" width="32" src="//elink/startpage/images/weather/' + weather.code + '.png">';
+				html += '<img alt="' + weather.currently + ' weather icon" width="32" src="/wp-content/themes/BMPtheme/images/weather/' + weather.code + '.png">';
 				html += '<p class="currently">' + weather.currently + '</p>';
 				$("#weather").html(html);
 			},
