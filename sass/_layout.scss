@@ -66,8 +66,16 @@ $threecol_width:($fullcontainer_width/3)-($margin_width*4/3);
 $fourcol_width:($fullcontainer_width/4)-($margin_width*5/4); 
 $fivecol_width:($fullcontainer_width/5)-($margin_width*6/5); 
 $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);   
+
+$onecol_main_width:($fullcontainer_width - ($margin_width /2))-($margin_width*2);
+$twocol_main_width:(($fullcontainer_width - ($margin_width /2)) /2)-($margin_width*3/2);
+$threecol_main_width:(($fullcontainer_width - ($margin_width /2)) /3)-($margin_width*4/3);
+$fourcol_main_width:(($fullcontainer_width - ($margin_width /2)) /4)-($margin_width*5/4); 
+$fivecol_main_width:(($fullcontainer_width - ($margin_width /2)) /5)-($margin_width*6/5); 
+$sixcol_main_width:(($fullcontainer_width - ($margin_width /2)) /6)-($margin_width*7/6); 
    
-    .col{width:($fullcontainer_width/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
+   //.col{width:($fullcontainer_width/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
+ 	//.main .col{width:(($fullcontainer_width - ($margin_width /2))/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
 
     .onecol .col                                  {width: $onecol_width;}
     .twocol .col                                  {width: $twocol_width;}
@@ -92,25 +100,76 @@ $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);
         .sixcol .spanfour                         {width: $sixcol_width * 4 + ($margin_width * 3);}
         .sixcol .spanfive                         {width: $sixcol_width * 5 + ($margin_width * 4);}
         .sixcol .spansix                          {width: $sixcol_width * 6 + ($margin_width * 5);}    
+
+
+  	.onecol.main .col                             {width: $onecol_main_width;}
+  	.twocol.main .col                             {width: $twocol_main_width;}
+  	.threecol.main .col                           {width: $threecol_main_width;} 
+  	    .threecol.main .spantwo                   {width: $threecol_main_width * 2 + $margin_width;}
+  	    .threecol.main .spanthree                 {width: $threecol_main_width * 3 + $margin_width * 2;}
+  	     
+  	.fourcol.main .col                            {width: $fourcol_main_width;}
+  	    .fourcol.main .spantwo                    {width: $fourcol_main_width * 2 + $margin_width;}
+  	    .fourcol.main .spanthree                  {width: $fourcol_main_width * 3 + ($margin_width * 2);}
+  	    .fourcol.main .spanfour                   {width: $fourcol_main_width * 4 + ($margin_width * 3);}
+  	         
+  	.fivecol.main .col                            {width: $fivecol_main_width;}
+  	    .fivecol.main .spantwo                    {width: $fivecol_main_width * 2 + $margin_width;}
+  	    .fivecol.main .spanthree                  {width: $fivecol_main_width * 3 + ($margin_width * 2);}
+  	    .fivecol.main .spanfour                   {width: $fivecol_main_width * 4 + ($margin_width * 3);}
+  	    .fivecol.main .spanfive                   {width: $fivecol_main_width * 5 + ($margin_width * 4);}
+  	 
+  	.sixcol.main .col                             {width: $sixcol_main_width;}
+  	    .sixcol.main .spantwo                     {width: $sixcol_main_width * 2 + $margin_width;}
+  	    .sixcol.main .spanthree                   {width: $sixcol_main_width * 3 + ($margin_width * 2);}
+  	    .sixcol.main .spanfour                    {width: $sixcol_main_width * 4 + ($margin_width * 3);}
+  	    .sixcol.main .spanfive                    {width: $sixcol_main_width * 5 + ($margin_width * 4);}
+  	    .sixcol.main .spansix                     {width: $sixcol_main_width * 6 + ($margin_width * 5);}    
+
 /* Incedentals
 ================================================== */
-$menuitem_width:
-(
-    ($fullcontainer_width / $number_of_columns)
-    *
-    ($width_of_nav_in_columns / $number_of_nav_items)
-)
--
-($margin_width * ($number_of_columns + 1) / $number_of_columns)
+$usablecolwidth: 
+$fullcontainer_width - (($margin_width * $number_of_columns) + $margin_width) 
+;
+
+$acolumnwidth:
+$usablecolwidth/$number_of_columns
+;
+
+$navcoltotalfull:
+($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns + 1))
+;
+$navcoltotalcropped:
+($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns - 1))
+;
+
+$menuitem_width_full:
+($navcoltotalfull - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+;
+
+$menuitem_width_cropped:
+($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
 ;
 .navarea {
-    ul.menu {margin:0;
-      li {margin:0 $margin_width 0 0; width:$menuitem_width}
-      li:last-child{margin:0}
-      ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;
-      }
+    ul.menu {
+        margin:0; 
+        width:$navcoltotalfull;
+        li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
+        li:last-child{margin:0}
+        ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
     }
 }
+.navarea.cropped{
+    ul.menu {
+        margin:0; 
+        width:$navcoltotalcropped;
+        li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
+        li:last-child{margin:0}
+        ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
+    }
+
+}
+
 /*
  _______  _______  _______  _______ 
 (       )(  ___  )(       )(  ___  )
@@ -143,6 +202,15 @@ $menuitem_width:
     $fivecol_width:($fullcontainer_width/5)-($margin_width*6/5); 
     $sixcol_width:($fullcontainer_width/6)-($margin_width*7/6);  
 
+    $onecol_main_width:($fullcontainer_width - ($margin_width /2))-($margin_width*2);
+		$twocol_main_width:(($fullcontainer_width - ($margin_width /2)) /2)-($margin_width*3/2);
+		$threecol_main_width:(($fullcontainer_width - ($margin_width /2)) /3)-($margin_width*4/3);
+		$fourcol_main_width:(($fullcontainer_width - ($margin_width /2)) /4)-($margin_width*5/4); 
+		$fivecol_main_width:(($fullcontainer_width - ($margin_width /2)) /5)-($margin_width*6/5); 
+		$sixcol_main_width:(($fullcontainer_width - ($margin_width /2)) /6)-($margin_width*7/6); 
+   
+
+
     .col{width:($fullcontainer_width/$number_of_columns)-($margin_width*($number_of_columns + 1)/$number_of_columns)}
 
     .onecol .col                                  {width: $onecol_width;}
@@ -169,24 +237,72 @@ $menuitem_width:
         .sixcol .spanfive                         {width: $sixcol_width * 5 + ($margin_width * 4);}
         .sixcol .spansix                          {width: $sixcol_width * 6 + ($margin_width * 5);}
 
+
+  	.onecol.main .col                             {width: $onecol_main_width;}
+  	.twocol.main .col                             {width: $twocol_main_width;}
+  	.threecol.main .col                           {width: $threecol_main_width;} 
+  	    .threecol.main .spantwo                   {width: $threecol_main_width * 2 + $margin_width;}
+  	    .threecol.main .spanthree                 {width: $threecol_main_width * 3 + $margin_width * 2;}
+  	     
+  	.fourcol.main .col                            {width: $fourcol_main_width;}
+  	    .fourcol.main .spantwo                    {width: $fourcol_main_width * 2 + $margin_width;}
+  	    .fourcol.main .spanthree                  {width: $fourcol_main_width * 3 + ($margin_width * 2);}
+  	    .fourcol.main .spanfour                   {width: $fourcol_main_width * 4 + ($margin_width * 3);}
+  	         
+  	.fivecol.main .col                            {width: $fivecol_main_width;}
+  	    .fivecol.main .spantwo                    {width: $fivecol_main_width * 2 + $margin_width;}
+  	    .fivecol.main .spanthree                  {width: $fivecol_main_width * 3 + ($margin_width * 2);}
+  	    .fivecol.main .spanfour                   {width: $fivecol_main_width * 4 + ($margin_width * 3);}
+  	    .fivecol.main .spanfive                   {width: $fivecol_main_width * 5 + ($margin_width * 4);}
+  	 
+  	.sixcol.main .col                             {width: $sixcol_main_width;}
+  	    .sixcol.main .spantwo                     {width: $sixcol_main_width * 2 + $margin_width;}
+  	    .sixcol.main .spanthree                   {width: $sixcol_main_width * 3 + ($margin_width * 2);}
+  	    .sixcol.main .spanfour                    {width: $sixcol_main_width * 4 + ($margin_width * 3);}
+  	    .sixcol.main .spanfive                    {width: $sixcol_main_width * 5 + ($margin_width * 4);}
+  	    .sixcol.main .spansix                     {width: $sixcol_main_width * 6 + ($margin_width * 5);}
     
-$menuitem_width:
+	$usablecolwidth: 
+	$fullcontainer_width - (($margin_width * $number_of_columns) + $margin_width) 
+	;
 
-(
-    ($fullcontainer_width / $number_of_columns)
-    *
-    ($width_of_nav_in_columns / $number_of_nav_items)
-)
--
-($margin_width * ($number_of_columns + 1) / $number_of_columns)
-;
+	$acolumnwidth:
+	$usablecolwidth/$number_of_columns
+	;
 
-.navarea {
-    ul.menu {margin:0;
-      li {margin:0 $margin_width 0 0; width:$menuitem_width}
-      ul.sub-menu{ width:$menuitem_width * 2 + $margin_width;}
-    }
-}
+	$navcoltotalfull:
+	($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns + 1))
+	;
+	$navcoltotalcropped:
+	($acolumnwidth * $width_of_nav_in_columns) + ($margin_width * ($width_of_nav_in_columns - 1))
+	;
+
+	$menuitem_width_full:
+	($navcoltotalfull - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+	;
+
+	$menuitem_width_cropped:
+	($navcoltotalcropped - ($margin_width * ($number_of_nav_items - 1))) / $number_of_nav_items 
+	;
+	.navarea {
+	    ul.menu {
+	        margin:0; 
+	        width:$navcoltotalfull;
+	        li {margin:0 $margin_width 0 0; width:$menuitem_width_full}
+	        li:last-child{margin:0}
+	        ul.sub-menu{ width:$menuitem_width_full * 2 + $margin_width;}
+	    }
+	}
+	.navarea.cropped{
+	    ul.menu {
+	        margin:0; 
+	        width:$navcoltotalcropped;
+	        li {margin:0 $margin_width 0 0; width:$menuitem_width_cropped}
+	        li:last-child{margin:0}
+	        ul.sub-menu{ width:$menuitem_width_cropped * 2 + $margin_width;}
+	    }
+
+	}
 
 }
 /* #Tablet (Portrait)
@@ -212,7 +328,7 @@ _________ _______  _______  _
     .container .rowholder .col,
     .container .rowholder           { margin:0 !important; width:100% !important;}
 
-      .onecol .col                                ,
+    .onecol .col                                  ,
     .twocol .col                                  ,
     .threecol .col                                ,
         .threecol .spantwo                        ,
@@ -243,6 +359,31 @@ _________ _______  _______  _
         .sixcol .spanfour.rowholder               ,
         .sixcol .spanfive.rowholder               ,
         .sixcol .spansix.rowholder                ,
+
+    .onecol.main .col                             ,     
+  	.twocol.main .col                             ,    
+  	.threecol.main .col                           ,    
+  	    .threecol.main .spantwo                   ,    
+  	    .threecol.main .spanthree                 ,    
+  	          
+  	.fourcol.main .col                            ,    
+  	    .fourcol.main .spantwo                    ,    
+  	    .fourcol.main .spanthree                  ,    
+  	    .fourcol.main .spanfour                   ,    
+  	              
+  	.fivecol.main .col                            ,    
+  	    .fivecol.main .spantwo                    ,    
+  	    .fivecol.main .spanthree                  ,    
+  	    .fivecol.main .spanfour                   ,    
+  	    .fivecol.main .spanfive                   ,    
+  	      
+  	.sixcol.main .col                             ,    
+  	    .sixcol.main .spantwo                     ,    
+  	    .sixcol.main .spanthree                   ,    
+  	    .sixcol.main .spanfour                    ,    
+  	    .sixcol.main .spanfive                    ,    
+  	    .sixcol.main .spansix                     ,        
+
         
     .container .fullwidth           {width: $onecol_width;}
 }

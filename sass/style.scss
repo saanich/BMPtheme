@@ -18,7 +18,7 @@ $googlefont1: "Muli", sans-serif;
 $googlefont2: "Droid", serif;
 $number_of_columns: 4;
 $number_of_nav_items: 3;
-$width_of_nav_in_columns: 3;
+$width_of_nav_in_columns: 2.93;
 $nav_bg: #4c9cd2;
 $nav_color: white;
 $nav_hover_bg: lighten($lightcolor, 10%);
@@ -341,7 +341,7 @@ h2.sitetitle {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	margin-top: -1.5em;
+	margin-top: -1.4em;
 }
 
 .subcol ul.nobg {

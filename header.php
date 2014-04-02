@@ -80,7 +80,7 @@
       <?php dynamic_sidebar('topbar') ?>
     </div>
   </div>
-  <div class="navarea container fourcol">
+  <div class="navarea cropped container fourcol">
     <div class="col bodybackgroundcolour rowholder">
       &nbsp;
     </div>
